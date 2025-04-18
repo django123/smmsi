@@ -1,0 +1,31 @@
+server:
+  port: 8087
+
+spring:
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: gcase-group
+      auto-offset-reset: earliest
+
+
+  devtools:
+    restart:
+      poll-interval: 1s
+      quiet-period: 500ms
+
+
+
+kafka:
+  topic:
+    precomp: merchant-remittance
+    tracability: event-tracability
+
+sid:
+  api:
+    url: https://sid.example.com/creditcom/v1
+    token: ${SID_API_TOKEN}

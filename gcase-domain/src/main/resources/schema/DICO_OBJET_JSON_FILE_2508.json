@@ -1,0 +1,699 @@
+{
+	"$schema": "http://json-schemas.org/draft/schema#",
+
+	"$comment01": "--------",
+	"$comment02": "01/04/2025 16:31:00 : Produit a partir de la version V2 du programme ISO20022_Objets_Excel2JSON",
+	"$comment03": "Fichier Source      : D:/PARTECIS/Data Services Exploit - Etudes/ISO20022/LIVRAISONS/DICO_ESTREEM_v2508",
+	"$comment04": "Fichier Destination : D:/PARTECIS/Data Services Exploit - Etudes/ISO20022/LIVRAISONS/DICO_OBJET_JSON_FILE_250401_163100.json",
+	"$comment05": "--------",
+	"$comment06": "WARNING : Verifier l'utilisation de la reference DICO_OBJET_JSON_ dans l'ensemble du fichier",
+	"$comment07": "--------",
+
+	"$title": "StandardUserMessage",
+	"type": "object",
+	"properties": {
+		"error": {"$ref": "#/definitions/DICO_OBJET_JSON_Error" },
+		"httpStatus": {"$ref": "#/definitions/DICO_OBJET_JSON_HttpStatus" },
+		"cardContext": {"$ref": "#/definitions/DICO_OBJET_JSON_CardContext" },
+		"merchantParameters": {"$ref": "#/definitions/DICO_OBJET_JSON_MerchantParameters" },
+		"pointOfServiceContext": {"$ref": "#/definitions/DICO_OBJET_JSON_PointOfServiceContext" },
+		"riskContext": {"$ref": "#/definitions/DICO_OBJET_JSON_RiskContext" },
+		"transactionContext": {"$ref": "#/definitions/DICO_OBJET_JSON_TransactionContext" },
+		"verification": {"$ref": "#/definitions/DICO_OBJET_JSON_Verification" },
+		"verificationValue": {"$ref": "#/definitions/DICO_OBJET_JSON_VerificationValue" },
+		"acquirer": {"$ref": "#/definitions/DICO_OBJET_JSON_Acquirer" },
+		"card": {"$ref": "#/definitions/DICO_OBJET_JSON_Card" },
+		"cardholder": {"$ref": "#/definitions/DICO_OBJET_JSON_Cardholder" },
+		"merchant": {"$ref": "#/definitions/DICO_OBJET_JSON_Merchant" },
+		"sponsoredMerchant": {"$ref": "#/definitions/DICO_OBJET_JSON_SponsoredMerchant" },
+		"terminal": {"$ref": "#/definitions/DICO_OBJET_JSON_Terminal" },
+		"token": {"$ref": "#/definitions/DICO_OBJET_JSON_Token" },
+		"wallet": {"$ref": "#/definitions/DICO_OBJET_JSON_Wallet" },
+		"payee": {"$ref": "#/definitions/DICO_OBJET_JSON_Payee" },
+		"payer": {"$ref": "#/definitions/DICO_OBJET_JSON_Payer" },
+		"headerFunctionalInfo": {"$ref": "#/definitions/DICO_OBJET_JSON_HeaderFunctionalInfo" },
+		"additionalResponseData": {"$ref": "#/definitions/DICO_OBJET_JSON_AdditionalResponseData" },
+		"chargebackData": {"$ref": "#/definitions/DICO_OBJET_JSON_ChargebackData" },
+		"disputeData": {"$ref": "#/definitions/DICO_OBJET_JSON_DisputeData" },
+		"eMV": {"$ref": "#/definitions/DICO_OBJET_JSON_EMV" },
+		"eventData": {"$ref": "#/definitions/DICO_OBJET_JSON_EventData" },
+		"interchange": {"$ref": "#/definitions/DICO_OBJET_JSON_Interchange" },
+		"issuerScript": {"$ref": "#/definitions/DICO_OBJET_JSON_IssuerScript" },
+		"originalTransactionData": {"$ref": "#/definitions/DICO_OBJET_JSON_OriginalTransactionData" },
+		"response": {"$ref": "#/definitions/DICO_OBJET_JSON_Response" },
+		"schemeFees": {"$ref": "#/definitions/DICO_OBJET_JSON_SchemeFees" },
+		"security": {"$ref": "#/definitions/DICO_OBJET_JSON_Security" },
+		"threeDs": {"$ref": "#/definitions/DICO_OBJET_JSON_ThreeDs" },
+		"transactionDetails": {"$ref": "#/definitions/DICO_OBJET_JSON_TransactionDetails" },
+		"transactionIdentification": {"$ref": "#/definitions/DICO_OBJET_JSON_TransactionIdentification" }
+	},
+	"definitions": {
+		"DICO_OBJET_JSON_Error" : {
+			"type": "object",
+			"properties": {
+				"code" : { "$ref" : "Typologie.json#/definitions/Max20Text" },
+				"developerText" : { "$ref" : "Typologie.json#/definitions/Max70Text" },
+				"moreInfo" : { "$ref" : "Typologie.json#/definitions/Max256Text" },
+				"text" : { "$ref" : "Typologie.json#/definitions/Max40Text" }
+			}
+		},
+		"DICO_OBJET_JSON_HttpStatus" : {
+			"type": "object",
+			"properties": {
+				"httpCode" : { "$ref" : "Typologie.json#/definitions/Exact3NumericText" }
+			}
+		},
+		"DICO_OBJET_JSON_CardContext" : {
+			"type": "object",
+			"properties": {
+				"actionOnCard" : { "$ref" : "Typologie.json#/definitions/ActivationCardCodeset" },
+				"activationCodeForNoShowInvoice" : { "$ref" : "Typologie.json#/definitions/Exact1AlphanumericText" },
+				"activCodePLBSInvoiceRemoteModeOrPreAuthProlongTransaction" : { "$ref" : "Typologie.json#/definitions/Exact1AlphanumericText" },
+				"additionalInvoiceActivationCode" : { "$ref" : "Typologie.json#/definitions/Exact1AlphanumericText" },
+				"forcingAuthorised" : { "$ref" : "Typologie.json#/definitions/Exact1AlphanumericText" },
+				"maximumLengthOfPAN" : { "$ref" : "Typologie.json#/definitions/Max2AlphanumericText" },
+				"minimumLengthOfPAN" : { "$ref" : "Typologie.json#/definitions/Max2AlphanumericText" },
+				"pinEntryTimer" : { "$ref" : "Typologie.json#/definitions/Exact2AlphanumericText" },
+				"processingModeForNSCardApplicationCurrency" : { "$ref" : "Typologie.json#/definitions/Exact1AlphanumericText" },
+				"typeOfAuthorisationRequestTrigger" : { "$ref" : "Typologie.json#/definitions/Exact1AlphanumericText" }
+			}
+		},
+		"DICO_OBJET_JSON_MerchantParameters" : {
+			"type": "object",
+			"properties": {
+				"duplicatedTransactionControlIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"fraudReportingIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"governmentControlCountryCode" : { "$ref" : "Typologie.json#/definitions/ISO3NumericCountryCode" },
+				"governmentControlIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"maximumAutorizedCredit" : { "$ref" : "Typologie.json#/definitions/AmountType" },
+				"maximumAutorizedDebit" : { "$ref" : "Typologie.json#/definitions/AmountType" },
+				"noShowIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"paymentFacilitatorIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"paymentProtocolCategory" : { "$ref" : "Typologie.json#/definitions/PaymentProtocolCategoryCodeset" },
+				"paymentProtocolVersion" : { "$ref" : "Typologie.json#/definitions/PaymentProtocolVersionCodeset" },
+				"transactionNumericStatementIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"transactionPaperStatementIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" }
+			}
+		},
+		"DICO_OBJET_JSON_PointOfServiceContext" : {
+			"type": "object",
+			"properties": {
+				"contactlessApplicationIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"digitalCommerceCheckinEntity" : { "$ref" : "Typologie.json#/definitions/Max15Text" },
+				"digitalCommerceCheckinMethod" : { "$ref" : "Typologie.json#/definitions/Max40Text" },
+				"digitalCommerceDomainId" : { "$ref" : "Typologie.json#/definitions/DigitalCommerceDomainIdCodeset" },
+				"digitalCommerceProgram" : { "$ref" : "Typologie.json#/definitions/DigitalCommerceProgramCodeset" },
+				"extendedEcommerceIndicator" : { "$ref" : "Typologie.json#/definitions/Exact3NumericText" },
+				"inputCapabilities" : { "$ref" : "Typologie.json#/definitions/Exact4Text" },
+				"merchantSchemeTokenizationIndicator" : { "$ref" : "Typologie.json#/definitions/MerchantSchemeTokenizationIndicatorCodeset" },
+				"nameOfTheMessageDisplayedOrPrinted" : { "$ref" : "Typologie.json#/definitions/Max40AlphanumericText" },
+				"numberOfTheMessageDisplayedOrPrinted" : { "$ref" : "Typologie.json#/definitions/Max2NumericText" },
+				"pinEntryCapability" : { "$ref" : "Typologie.json#/definitions/PinEntryCapabilityCodeset" },
+				"printCapabilities" : { "$ref" : "Typologie.json#/definitions/Max100Text" },
+				"transactionReceiptFooter" : { "$ref" : "Typologie.json#/definitions/Max50AlphanumericText" },
+				"transactionReceiptHeader" : { "$ref" : "Typologie.json#/definitions/Max50AlphanumericText" }
+			}
+		},
+		"DICO_OBJET_JSON_RiskContext" : {
+			"type": "object",
+			"properties": {
+				"delegatedAuthenticationExemptionIndicator" : { "$ref" : "Typologie.json#/definitions/Exact1AlphaNumericText" },
+				"multiFactorAuthenticationExemptionIndicator" : { "$ref" : "Typologie.json#/definitions/Min3Max4Base64BinaryText" },
+				"riskAnalysisIndicatorsId" : { "$ref" : "Typologie.json#/definitions/Exact3AlphaNumericText" },
+				"riskAnalysisIndicatorsValue" : { "$ref" : "Typologie.json#/definitions/Exact3AlphaNumericText" },
+				"riskPipResponse" : { "$ref" : "Typologie.json#/definitions/Exact1NumericText" },
+				"riskRecommendation" : { "$ref" : "Typologie.json#/definitions/Exact1AlphaNumericText" },
+				"riskRulesId" : { "$ref" : "Typologie.json#/definitions/Exact4NumericText" },
+				"riskScoringServiceData" : { "$ref" : "Typologie.json#/definitions/Max31Base64BinaryText" },
+				"riskScoringServiceId" : { "$ref" : "Typologie.json#/definitions/Exact2Base64BinaryText" },
+				"riskTreatmentStatus" : { "$ref" : "Typologie.json#/definitions/Exact1AlphaNumericText" },
+				"traExemptionIndicator" : { "$ref" : "Typologie.json#/definitions/Exact1AlphaNumericText" },
+				"traScore" : { "$ref" : "Typologie.json#/definitions/Exact2AlphaNumericText" }
+			}
+		},
+		"DICO_OBJET_JSON_TransactionContext" : {
+			"type": "object",
+			"properties": {
+				"acceptanceSystemCardProductCode" : { "$ref" : "Typologie.json#/definitions/Max3AlphaNumericText" },
+				"accountNameVerificationNature" : { "$ref" : "Typologie.json#/definitions/AccountNameVerificationNatureCodeset" },
+				"applicationSelectionIndicator" : { "$ref" : "Typologie.json#/definitions/ApplicationSelectionIndicatorCodeset" },
+				"attendanceContext" : { "$ref" : "Typologie.json#/definitions/AttendanceContextCodeset" },
+				"authenticationAmount" : { "$ref" : "Typologie.json#/definitions/AmountType" },
+				"authenticationDate" : { "$ref" : "Typologie.json#/definitions/ISODateTime" },
+				"authenticationProgramIndicator" : { "$ref" : "Typologie.json#/definitions/Exact2AlphaNumericText" },
+				"authorisationUnbundling" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"blockedRoute" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"buyingMethod" : { "$ref" : "Typologie.json#/definitions/BuyingMethodCodeset" },
+				"cardDataEntryMode" : { "$ref" : "Typologie.json#/definitions/CardDataEntryModeCodeset" },
+				"cardholderPresent" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"cardholderVerificationMethod" : { "$ref" : "Typologie.json#/definitions/Max6Base64BinaryText" },
+				"cardOnFileAction" : { "$ref" : "Typologie.json#/definitions/COFActionCodeset" },
+				"cardPresent" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"cardSecurityCodePresence" : { "$ref" : "Typologie.json#/definitions/CardSecurityCodePresenceCodeset" },
+				"cardSecurityCodeValue" : { "$ref" : "Typologie.json#/definitions/Exact3NumericText" },
+				"cardSecurityCodeVerificationInformation" : { "$ref" : "Typologie.json#/definitions/CardSecurityCodeVerificationCodeset" },
+				"decisionAlgorithmRoute" : { "$ref" : "Typologie.json#/definitions/Max2NumericText" },
+				"domainIndicator" : { "$ref" : "Typologie.json#/definitions/DomainIndicatorCodeset" },
+				"dualRoute" : { "$ref" : "Typologie.json#/definitions/Max11NumericText" },
+				"electronicCommerceAuthentication" : { "$ref" : "Typologie.json#/definitions/ElectronicCommerceAuthenticationNature" },
+				"encryptionAlgorithm " : { "$ref" : "Typologie.json#/definitions/EncryptionAlgorithmCodeset" },
+				"extensionDualRoute" : { "$ref" : "Typologie.json#/definitions/Max10NumericText" },
+				"extensionNominalRoute" : { "$ref" : "Typologie.json#/definitions/Max10NumericText" },
+				"forwardingId" : { "$ref" : "Typologie.json#/definitions/Max11NumericText" },
+				"functionCode" : { "$ref" : "Typologie.json#/definitions/Exact3NumericText" },
+				"fundsTransferApplicationNature" : { "$ref" : "Typologie.json#/definitions/Max3AlphaNumericText" },
+				"fundTransferReason" : { "$ref" : "Typologie.json#/definitions/Max40Text" },
+				"internationalAuthorisationNetwork" : { "$ref" : "Typologie.json#/definitions/Exact2Base64BinaryText" },
+				"issuerAuthenticationData" : { "$ref" : "Typologie.json#/definitions/Min11Max22Base64BinaryText" },
+				"jurisdiction" : { "$ref" : "Typologie.json#/definitions/Max50Text" },
+				"kernelId" : { "$ref" : "Typologie.json#/definitions/Exact2Base64BinaryText" },
+				"keySerialNumber" : { "$ref" : "Typologie.json#/definitions/Min12Max16Base64BinaryText" },
+				"manualIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"networkCodeDualRoute" : { "$ref" : "Typologie.json#/definitions/NetworkCodeset" },
+				"networkCodeNominalRoute" : { "$ref" : "Typologie.json#/definitions/NetworkCodeset" },
+				"networkService" : { "$ref" : "Typologie.json#/definitions/NetworkServiceCodeset" },
+				"networkSubService" : { "$ref" : "Typologie.json#/definitions/NetworkSubServiceCodeset" },
+				"nominalRoute" : { "$ref" : "Typologie.json#/definitions/Max11NumericText" },
+				"paymentUseCase" : { "$ref" : "Typologie.json#/definitions/PaymentUseCaseCodeset" },
+				"pointOfServiceConditionCode" : { "$ref" : "Typologie.json#/definitions/ServiceConditionCodeCodeset" },
+				"reasonsForNotHonouringExemptions" : { "$ref" : "Typologie.json#/definitions/Exact4AlphaNumericText" },
+				"regulatoryAndTechnicalEnvironment" : { "$ref" : "Typologie.json#/definitions/Exact2Base64BinaryText" },
+				"resendCounter" : { "$ref" : "Typologie.json#/definitions/Exact1NumericText" },
+				"schemeNature" : { "$ref" : "Typologie.json#/definitions/NetworkCodeset" },
+				"securizationNature" : { "$ref" : "Typologie.json#/definitions/Exact2NumericText" },
+				"serviceAttribute" : { "$ref" : "Typologie.json#/definitions/Exact2NumericText" },
+				"serviceIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"statusOfMessageDisplayPrintCapability" : { "$ref" : "Typologie.json#/definitions/StatusOfMessageDisplayPrintCapabilityCodeset" },
+				"storedDataCategory " : { "$ref" : "Typologie.json#/definitions/StoredDataCategoryCodeSet" },
+				"systemAuthenticatingTheCardholder" : { "$ref" : "Typologie.json#/definitions/SystemAuthenticatingTheCardholderCodeset" },
+				"tracabilityEventID" : { "$ref" : "Typologie.json#/definitions/UUIDType" },
+				"traceabilityService" : { "$ref" : "Typologie.json#/definitions/TraceabilityServiceCodeset" },
+				"transactionNature" : { "$ref" : "Typologie.json#/definitions/TransactionNatureCodeset" },
+				"uuidContainerCategory" : { "$ref" : "Typologie.json#/definitions/UUIDContainerCategoryCodeset" },
+				"uuidContainerValue" : { "$ref" : "Typologie.json#/definitions/Exact36Text" },
+				"visaB2BProgramId" : { "$ref" : "Typologie.json#/definitions/Max2Text" }
+			}
+		},
+		"DICO_OBJET_JSON_Verification" : {
+			"type": "object",
+			"properties": {
+				"accountNameRequestValue" : { "$ref" : "Typologie.json#/definitions/Exact2AlphaNumericText" },
+				"acknowledgementRequestIndicator" : { "$ref" : "Typologie.json#/definitions/AcknowledgementRequestIndicatorCodeset" },
+				"cardholderAuthenticationMethod" : { "$ref" : "Typologie.json#/definitions/Exact2Text" },
+				"cardholderAuthenticationValueProcessingInfo" : { "$ref" : "Typologie.json#/definitions/Exact1Text" },
+				"keySetIdentifier" : { "$ref" : "Typologie.json#/definitions/Exact26Base64BinaryText" },
+				"secureCorporatePaymentExemptionIndicator" : { "$ref" : "Typologie.json#/definitions/Exact1AlphaNumericText" }
+			}
+		},
+		"DICO_OBJET_JSON_VerificationValue" : {
+			"type": "object",
+			"properties": {
+				"cardholderAuthenticationValueCalculationMethod" : { "$ref" : "Typologie.json#/definitions/Exact1AlphaNumericText" },
+				"paymentSolutionProof" : { "$ref" : "Typologie.json#/definitions/PaymentSolutionProofCodeset" }
+			}
+		},
+		"DICO_OBJET_JSON_Acquirer" : {
+			"type": "object",
+			"properties": {
+				"acquirerDomain" : { "$ref" : "Typologie.json#/definitions/Max16Text" },
+				"acquirerId" : { "$ref" : "Typologie.json#/definitions/Max11NumericText" },
+				"acquirerLeaderInstitutionId" : { "$ref" : "Typologie.json#/definitions/Max11NumericText" },
+				"acquirerName" : { "$ref" : "Typologie.json#/definitions/Max40Text" },
+				"countryCode" : { "$ref" : "Typologie.json#/definitions/ISO3NumericCountryCode" }
+			}
+		},
+		"DICO_OBJET_JSON_Card" : {
+			"type": "object",
+			"properties": {
+				"applicationId" : { "$ref" : "Typologie.json#/definitions/Min7Max22Base64BinaryText" },
+				"applicationInterchangeProfile" : { "$ref" : "Typologie.json#/definitions/Exact3Base64BinaryText" },
+				"billingAddress" : { "$ref" : "Typologie.json#/definitions/PostalAddressType" },
+				"cardApplication" : { "$ref" : "Typologie.json#/definitions/CardApplicationCodeset" },
+				"cardBrand" : { "$ref" : "Typologie.json#/definitions/BrandCodeset" },
+				"cardBrandProductCode" : { "$ref" : "Typologie.json#/definitions/Max9NumericText" },
+				"cardIssuerCountryZone" : { "$ref" : "Typologie.json#/definitions/CountryZoneCodeset" },
+				"cardIssuerProductCode" : { "$ref" : "Typologie.json#/definitions/CardProductCodeCodeset" },
+				"cardSecurityCodeIndicator" : { "$ref" : "Typologie.json#/definitions/CardSecurityCodeIndicatorCodeset" },
+				"cardSequenceNumber" : { "$ref" : "Typologie.json#/definitions/Min2Max3NumericText" },
+				"contactlessDevice" : { "$ref" : "Typologie.json#/definitions/Max47Base64BinaryText" },
+				"countryCode" : { "$ref" : "Typologie.json#/definitions/ISO3NumericCountryCode" },
+				"embossedName" : { "$ref" : "Typologie.json#/definitions/Max45Text" },
+				"encryptedPan" : { "$ref" : "Typologie.json#/definitions/Exact27Base64BinaryText" },
+				"expiryDate" : { "$ref" : "Typologie.json#/definitions/ISOYearMonth" },
+				"issuerId" : { "$ref" : "Typologie.json#/definitions/Max11NumericText" },
+				"issuerInstitutionId" : { "$ref" : "Typologie.json#/definitions/Max35Text" },
+				"issuerLeaderInstitutionId" : { "$ref" : "Typologie.json#/definitions/Max35Text" },
+				"mastercardProduct" : { "$ref" : "Typologie.json#/definitions/Exact3AlphaNumericText" },
+				"mastercardProgram" : { "$ref" : "Typologie.json#/definitions/Exact3AlphaNumericText" },
+				"paymentAccountReference" : { "$ref" : "Typologie.json#/definitions/Max29AlphaNumericText" },
+				"primaryAccountNumber" : { "$ref" : "Typologie.json#/definitions/Max19NumericText" },
+				"primaryAccountNumberL4D" : { "$ref" : "Typologie.json#/definitions/Exact4NumericText" },
+				"processorCardData" : { "$ref" : "Typologie.json#/definitions/ProcessorCardDataType" },
+				"processorIssuerData" : { "$ref" : "Typologie.json#/definitions/ProcessorIssuerDataType" },
+				"track1" : { "$ref" : "Typologie.json#/definitions/Max76Text" },
+				"track2" : { "$ref" : "Typologie.json#/definitions/Max37Text" }
+			}
+		},
+		"DICO_OBJET_JSON_Cardholder" : {
+			"type": "object",
+			"properties": {
+				"cardHolderId" : { "$ref" : "Typologie.json#/definitions/Max35AlphaNumericText" },
+				"countryCode" : { "$ref" : "Typologie.json#/definitions/ISO3NumericCountryCode" },
+				"email" : { "$ref" : "Typologie.json#/definitions/Max256Text" },
+				"firstName" : { "$ref" : "Typologie.json#/definitions/Max70Text" },
+				"lastName" : { "$ref" : "Typologie.json#/definitions/Max70Text" },
+				"localLanguageCode" : { "$ref" : "Typologie.json#/definitions/ISOMax3ALanguageCode" },
+				"middleName" : { "$ref" : "Typologie.json#/definitions/Max70Text" },
+				"phoneNumber" : { "$ref" : "Typologie.json#/definitions/PhoneNumberText" },
+				"postalAddress" : { "$ref" : "Typologie.json#/definitions/PostalAddressType" },
+				"taxCountryCode" : { "$ref" : "Typologie.json#/definitions/ISO3NumericCountryCode" },
+				"taxRegistrationIdentication" : { "$ref" : "Typologie.json#/definitions/Max35Text" },
+				"taxRegistrationReasonCode" : { "$ref" : "Typologie.json#/definitions/Max35Text" }
+			}
+		},
+		"DICO_OBJET_JSON_Merchant" : {
+			"type": "object",
+			"properties": {
+				"acceptanceChannel" : { "$ref" : "Typologie.json#/definitions/AcceptanceChannelCodeset" },
+				"acceptanceSystemLogicalNumber" : { "$ref" : "Typologie.json#/definitions/Max3NumericText" },
+				"allowedCountry" : { "$ref" : "Typologie.json#/definitions/ISO2AlphaNumericCountryCode" },
+				"allowedCurrency" : { "$ref" : "Typologie.json#/definitions/ISO3AlphaNumericCurrencyCode" },
+				"allowedSchemeCode" : { "$ref" : "Typologie.json#/definitions/NetworkCodeset" },
+				"anonymousIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"companyRegistrationNumber" : { "$ref" : "Typologie.json#/definitions/Max14AlphaNumericText" },
+				"companyRegistrationNumberCategory" : { "$ref" : "Typologie.json#/definitions/CompanyRegistrationNumberCategoryCodeset" },
+				"cryptoCurrencyIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"dynamicMerchantNameIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"foreignCurrencyIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"governmentCountryCode" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"locationCategoryCode" : { "$ref" : "Typologie.json#/definitions/Max8Text" },
+				"merchantAdditionalData" : { "$ref" : "Typologie.json#/definitions/Max200Text" },
+				"merchantCategory" : { "$ref" : "Typologie.json#/definitions/MerchantCategoryCodeset" },
+				"merchantCategoryCode" : { "$ref" : "Typologie.json#/definitions/ISO18245MerchantCategoryCode" },
+				"merchantCbId" : { "$ref" : "Typologie.json#/definitions/Max10NumericText" },
+				"merchantCbName" : { "$ref" : "Typologie.json#/definitions/Max40Text" },
+				"merchantFrenchContractNumber" : { "$ref" : "Typologie.json#/definitions/Max7NumericText" },
+				"merchantId" : { "$ref" : "Typologie.json#/definitions/Min7Max15NumericText" },
+				"merchantMastercardId" : { "$ref" : "Typologie.json#/definitions/Max10NumericText" },
+				"merchantMastercardName" : { "$ref" : "Typologie.json#/definitions/Max20Text" },
+				"merchantName" : { "$ref" : "Typologie.json#/definitions/Max40Text" },
+				"merchantProcessingEndDate" : { "$ref" : "Typologie.json#/definitions/ISODateTime" },
+				"merchantProcessingStartDate" : { "$ref" : "Typologie.json#/definitions/ISODateTime" },
+				"merchantVisaId" : { "$ref" : "Typologie.json#/definitions/Max10NumericText" },
+				"merchantVisaName" : { "$ref" : "Typologie.json#/definitions/Max40Text" },
+				"paymentCategory" : { "$ref" : "Typologie.json#/definitions/PaymentCategoryCodeset" },
+				"poiIdByAcquirer" : { "$ref" : "Typologie.json#/definitions/Max8Text" },
+				"postalAddress" : { "$ref" : "Typologie.json#/definitions/PostalAddressType" },
+				"schemeMerchantId" : { "$ref" : "Typologie.json#/definitions/Exact8Text" },
+				"signName" : { "$ref" : "Typologie.json#/definitions/Max40Text" },
+				"singleContractIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" }
+			}
+		},
+		"DICO_OBJET_JSON_SponsoredMerchant" : {
+			"type": "object",
+			"properties": {
+				"finalMerchantId" : { "$ref" : "Typologie.json#/definitions/Exact15Text" },
+				"independantSalesOrganisationId" : { "$ref" : "Typologie.json#/definitions/Exact15Text" },
+				"marketPlaceId" : { "$ref" : "Typologie.json#/definitions/Exact15Text" },
+				"paymentFacilitatorId" : { "$ref" : "Typologie.json#/definitions/Exact15Text" }
+			}
+		},
+		"DICO_OBJET_JSON_Terminal" : {
+			"type": "object",
+			"properties": {
+				"acceptanceSystemComponentsIdentifier" : { "$ref" : "Typologie.json#/definitions/Exact12NumericText" },
+				"acceptanceSystemIdentifierAssignedByAnAcquirer" : { "$ref" : "Typologie.json#/definitions/Exact8AlphanumericText" },
+				"approvalCodeLength" : { "$ref" : "Typologie.json#/definitions/Exact1NumericText" },
+				"cardAcceptorArchitectureCategory" : { "$ref" : "Typologie.json#/definitions/CardAcceptorArchitectureCategoryCodeset" },
+				"cardAcceptorLogicalNumber" : { "$ref" : "Typologie.json#/definitions/Exact3AlphanumericText" },
+				"cardholderAuthenticationCapabilities" : { "$ref" : "Typologie.json#/definitions/CardholderAuthenticationCapabilitiesCodeset" },
+				"cardholderPickUpCapabilities" : { "$ref" : "Typologie.json#/definitions/CardholderPickUpCapabilitiesCodeset" },
+				"cardReadingCapabilities" : { "$ref" : "Typologie.json#/definitions/CardReadingCapabilitiesCodeset" },
+				"cardWriteCapabilities" : { "$ref" : "Typologie.json#/definitions/CardWriteCapabilitiesCodeset" },
+				"countryCode" : { "$ref" : "Typologie.json#/definitions/ISO3NumericCountryCode" },
+				"ipAddress" : { "$ref" : "Typologie.json#/definitions/Min4Max45Text" },
+				"iTpsa" : { "$ref" : "Typologie.json#/definitions/Exact12NumericText" },
+				"iTpta" : { "$ref" : "Typologie.json#/definitions/Exact12NumericText" },
+				"messageDisplayPrintCapabilities" : { "$ref" : "Typologie.json#/definitions/MessageDisplayPrintCapabilitiesCodeset" },
+				"pinLengthCapabilities" : { "$ref" : "Typologie.json#/definitions/4Or6NumericText" },
+				"pinReadingCapabilities" : { "$ref" : "Typologie.json#/definitions/PinReadingCapabilitiesCodeset" },
+				"poiAssignedByAnAcquirer" : { "$ref" : "Typologie.json#/definitions/Exact8AlphanumericText" },
+				"poiInformation" : { "$ref" : "Typologie.json#/definitions/POIInformationCodeset" },
+				"poiLogicalNumber" : { "$ref" : "Typologie.json#/definitions/Exact3AlphaNumericText" },
+				"serialNumber" : { "$ref" : "Typologie.json#/definitions/Max35Text" },
+				"terminalCapabilities" : { "$ref" : "Typologie.json#/definitions/Exact4Base64BinaryText" },
+				"terminalCategory" : { "$ref" : "Typologie.json#/definitions/Exact2NumericText" },
+				"terminalId" : { "$ref" : "Typologie.json#/definitions/Exact8Text" },
+				"terminalIdsa" : { "$ref" : "Typologie.json#/definitions/Exact8AlphaNumericText" }
+			}
+		},
+		"DICO_OBJET_JSON_Token" : {
+			"type": "object",
+			"properties": {
+				"tokenAssuranceMethod" : { "$ref" : "Typologie.json#/definitions/Max2NumericText" },
+				"tokenProgramIndicator" : { "$ref" : "Typologie.json#/definitions/Exact1Text" },
+				"tokenRequestorIdentification" : { "$ref" : "Typologie.json#/definitions/Max35Text" },
+				"trustedMerchantExemptionIndicator" : { "$ref" : "Typologie.json#/definitions/Exact1AlphaNumericText" }
+			}
+		},
+		"DICO_OBJET_JSON_Wallet" : {
+			"type": "object",
+			"properties": {
+				"walletId" : { "$ref" : "Typologie.json#/definitions/Max3NumericText" },
+				"walletNomenclature" : { "$ref" : "Typologie.json#/definitions/WalletNomenclatureCodeset" }
+			}
+		},
+		"DICO_OBJET_JSON_Payee" : {
+			"type": "object",
+			"properties": {
+				"accountNumber" : { "$ref" : "Typologie.json#/definitions/Max35AlphaNumericText" },
+				"primaryAccountNumber" : { "$ref" : "Typologie.json#/definitions/Max19NumericText" }
+			}
+		},
+		"DICO_OBJET_JSON_Payer" : {
+			"type": "object",
+			"properties": {
+				"accountNumber" : { "$ref" : "Typologie.json#/definitions/Max35AlphaNumericText" },
+				"financialInstitutionId" : { "$ref" : "Typologie.json#/definitions/Max35Text" },
+				"internationalBankAccountNumber" : { "$ref" : "Typologie.json#/definitions/IBANIdentifier" }
+			}
+		},
+		"DICO_OBJET_JSON_HeaderFunctionalInfo" : {
+			"type": "object",
+			"properties": {
+				"datetime" : { "$ref" : "Typologie.json#/definitions/ISODateTime" },
+				"messageDescription" : { "$ref" : "Typologie.json#/definitions/Max255Text" },
+				"messageFunction" : { "$ref" : "Typologie.json#/definitions/MessageFunctionCodeset" },
+				"protocolVersion" : { "$ref" : "Typologie.json#/definitions/Max50Text" },
+				"recipientPartyResponseCode" : { "$ref" : "Typologie.json#/definitions/Exact5NumericText" },
+				"vacationNumber" : { "$ref" : "Typologie.json#/definitions/Max5NumericText" }
+			}
+		},
+		"DICO_OBJET_JSON_AdditionalResponseData" : {
+			"type": "object",
+			"properties": {
+				"acceptorAdvice" : { "$ref" : "Typologie.json#/definitions/Exact2NumericText" },
+				"accountFundingSource" : { "$ref" : "Typologie.json#/definitions/AccountFundingSourceCodeset" },
+				"accountNameRequestResult" : { "$ref" : "Typologie.json#/definitions/VFNCodeset" },
+				"addServiceReportData" : { "$ref" : "Typologie.json#/definitions/AddServiceReportDataCodeset" },
+				"addServiceReportId" : { "$ref" : "Typologie.json#/definitions/AddServiceReportIDCodeset" },
+				"applicationCryptogramProcessingInformation" : { "$ref" : "Typologie.json#/definitions/ApplicationCryptogramProcessingInformationCodeset" },
+				"appliedAuthorizationCharacteristicsIndicator" : { "$ref" : "Typologie.json#/definitions/Exact1AlphaNumericText" },
+				"appliedMarketSpecificDataIndicator" : { "$ref" : "Typologie.json#/definitions/Exact1AlphaNumericText" },
+				"cardAuthenticationResultsCode" : { "$ref" : "Typologie.json#/definitions/VFNCodeset" },
+				"cardholderAddressCheckingInformation" : { "$ref" : "Typologie.json#/definitions/CardholderAddressCheckingInformationCodeset" },
+				"cardholderBillingCurrencyCode" : { "$ref" : "Typologie.json#/definitions/ISO3NumericCurrencyCode" },
+				"cardholderBillingCurrencyUnits" : { "$ref" : "Typologie.json#/definitions/Exact1Text" },
+				"cardTypeCode" : { "$ref" : "Typologie.json#/definitions/CardTypeCodeset" },
+				"cryptogramProcessingInformation" : { "$ref" : "Typologie.json#/definitions/CryptogramProcessingInformationCodeset" },
+				"destinationCurrencyCode" : { "$ref" : "Typologie.json#/definitions/ISO3NumericCurrencyCode" },
+				"destinationCurrencyUnits" : { "$ref" : "Typologie.json#/definitions/Exact1AlphaNumericText" },
+				"emailAddressVerificationResult" : { "$ref" : "Typologie.json#/definitions/VFNCodeset" },
+				"expenseThreshold" : { "$ref" : "Typologie.json#/definitions/VFNCodeset" },
+				"extendedMessageToInitiatorNature" : { "$ref" : "Typologie.json#/definitions/ExtendedMessageNatureCodeset" },
+				"extendedMessageToInitiatorValue" : { "$ref" : "Typologie.json#/definitions/Max100Text" },
+				"fastFundIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"fieldConversionEntitySource" : { "$ref" : "Typologie.json#/definitions/FieldConversionEntitySourceCodeset" },
+				"fieldConversionFieldNumber" : { "$ref" : "Typologie.json#/definitions/Exact3Text" },
+				"fieldConversionResponsibleValue" : { "$ref" : "Typologie.json#/definitions/Max17Text" },
+				"firstNameAccountMatchDecision" : { "$ref" : "Typologie.json#/definitions/Exact2AlphaNumericText" },
+				"fullNameAccountMatchDecision" : { "$ref" : "Typologie.json#/definitions/Exact2AlphaNumericText" },
+				"geoRestrictionIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"incorrectFieldErrorCode" : { "$ref" : "Typologie.json#/definitions/IncorrectFieldErrorCodeCodeset" },
+				"incorrectFieldNumber" : { "$ref" : "Typologie.json#/definitions/Exact3Text" },
+				"incorrectSubfield" : { "$ref" : "Typologie.json#/definitions/Max4Text" },
+				"issuerFunctionalIdentifier" : { "$ref" : "Typologie.json#/definitions/Exact8AlphaNumericText" },
+				"issuerInstitutionCountryCode" : { "$ref" : "Typologie.json#/definitions/Exact3AlphaNumericText" },
+				"lastNameAccountMatchDecision" : { "$ref" : "Typologie.json#/definitions/Exact2AlphaNumericText" },
+				"mastercardMagstripeError" : { "$ref" : "Typologie.json#/definitions/Exact1Text" },
+				"mastercardMagstripeErrorCategory" : { "$ref" : "Typologie.json#/definitions/Exact1Text" },
+				"maximumAmountAuthorisable" : { "$ref" : "Typologie.json#/definitions/AmountType" },
+				"maximumNumberReattempts" : { "$ref" : "Typologie.json#/definitions/Exact2NumericText" },
+				"merchantAdviceCode" : { "$ref" : "Typologie.json#/definitions/Exact2NumericText" },
+				"messageReasonCode" : { "$ref" : "Typologie.json#/definitions/Exact4NumericText" },
+				"messageToTransactionInitiatorCtrlCharacter" : { "$ref" : "Typologie.json#/definitions/MessageToTransactionInitiatorCtrlCharacterCodeset" },
+				"messageToTransactionInitiatorMessage" : { "$ref" : "Typologie.json#/definitions/Max20Text" },
+				"middleNameAccountMatchDecision" : { "$ref" : "Typologie.json#/definitions/Exact2AlphaNumericText" },
+				"modifiedElectronicCommerceAuthentification" : { "$ref" : "Typologie.json#/definitions/ModifiedElectronicCommerceAuthentificationCodeset" },
+				"networkEquipmentIdentifier" : { "$ref" : "Typologie.json#/definitions/Exact2Text" },
+				"octBlocking" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"onlineGameBlockingIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"phoneNumber" : { "$ref" : "Typologie.json#/definitions/PhoneNumberText" },
+				"phoneNumberVerificationResult" : { "$ref" : "Typologie.json#/definitions/VFNCodeset" },
+				"programDowngradeReasonCode" : { "$ref" : "Typologie.json#/definitions/Exact2AlphaNumericText" },
+				"reasonInformationCode" : { "$ref" : "Typologie.json#/definitions/Max4Text" },
+				"reasonInformationEntitySource" : { "$ref" : "Typologie.json#/definitions/ReasonInformationEntitySourceCodeset" },
+				"reattemptAllowedDuration" : { "$ref" : "Typologie.json#/definitions/Exact4NumericText" },
+				"reattemptFrozenPeriod" : { "$ref" : "Typologie.json#/definitions/Exact4NumericText" },
+				"respondingMachineId" : { "$ref" : "Typologie.json#/definitions/Max255Text" },
+				"securityErrorField" : { "$ref" : "Typologie.json#/definitions/Exact3NumericText" },
+				"securityErrorNature" : { "$ref" : "Typologie.json#/definitions/SecurityErrorCodeset" },
+				"terminalData" : { "$ref" : "Typologie.json#/definitions/Max26Text" },
+				"uniqueTransactionIdNetworkSource" : { "$ref" : "Typologie.json#/definitions/NetworkCodeset" },
+				"uniqueTransactionIdValue" : { "$ref" : "Typologie.json#/definitions/Max49Text" },
+				"validationCode" : { "$ref" : "Typologie.json#/definitions/Exact4Text" }
+			}
+		},
+		"DICO_OBJET_JSON_ChargebackData" : {
+			"type": "object",
+			"properties": {
+				"chargebackId" : { "$ref" : "Typologie.json#/definitions/Max19Text" },
+				"reasonCode" : { "$ref" : "Typologie.json#/definitions/Max6AlphaNumericText" },
+				"reasonLabel" : { "$ref" : "Typologie.json#/definitions/Max255Text" },
+				"representmentReasonCode" : { "$ref" : "Typologie.json#/definitions/Max6AlphaNumericText" }
+			}
+		},
+		"DICO_OBJET_JSON_DisputeData" : {
+			"type": "object",
+			"properties": {
+				"additionnalData" : { "$ref" : "Typologie.json#/definitions/AdditionalDataType" },
+				"auditTrailFolderEligibilityIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"creationDateTime" : { "$ref" : "Typologie.json#/definitions/ISODateTime" },
+				"decisionDateTime" : { "$ref" : "Typologie.json#/definitions/ISODateTime" },
+				"disputeCondition" : { "$ref" : "Typologie.json#/definitions/DisputeConditionCodeset" },
+				"disputeDataId" : { "$ref" : "Typologie.json#/definitions/Exact16AlphaNumericText" },
+				"disputeInternalIdentification" : { "$ref" : "Typologie.json#/definitions/Max19NumericText" },
+				"disputeQualification" : { "$ref" : "Typologie.json#/definitions/DisputeQualificationCodeset" },
+				"reasonStatusCode" : { "$ref" : "Typologie.json#/definitions/Max255Text" },
+				"reclamationIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"refundDecisionCode" : { "$ref" : "Typologie.json#/definitions/RefundDecisionCodeset" },
+				"statusChangeReason" : { "$ref" : "Typologie.json#/definitions/StatusChangeReasonCodeset" },
+				"statusCode" : { "$ref" : "Typologie.json#/definitions/StatusCodeCodeset" },
+				"statusLabel" : { "$ref" : "Typologie.json#/definitions/Max255Text" },
+				"statusUpdateDateTime" : { "$ref" : "Typologie.json#/definitions/ISODateTime" },
+				"totalAmount " : { "$ref" : "Typologie.json#/definitions/AmountType" },
+				"transactionsCount" : { "$ref" : "Typologie.json#/definitions/Max19NumericText" },
+				"updateDateTime" : { "$ref" : "Typologie.json#/definitions/ISODateTime" }
+			}
+		},
+		"DICO_OBJET_JSON_EMV" : {
+			"type": "object",
+			"properties": {
+				"appExpiryDate" : { "$ref" : "Typologie.json#/definitions/ISODate" },
+				"applicationCryptogram" : { "$ref" : "Typologie.json#/definitions/Exact11Base64BinaryText" },
+				"applicationSelectionRegisteredProprietaryData" : { "$ref" : "Typologie.json#/definitions/Min6Max43Base64BinaryText" },
+				"contactlessTrack1" : { "$ref" : "Typologie.json#/definitions/Max76Text" },
+				"contactlessTrack2" : { "$ref" : "Typologie.json#/definitions/Max26Base64BinaryText" },
+				"cryptogramInformationData" : { "$ref" : "Typologie.json#/definitions/Exact2Base64BinaryText" },
+				"issuerApplicationData" : { "$ref" : "Typologie.json#/definitions/Max43Base64BinaryText" },
+				"randomNumber" : { "$ref" : "Typologie.json#/definitions/Exact6Base64BinaryText" },
+				"terminalTransactionDate" : { "$ref" : "Typologie.json#/definitions/ISODate" },
+				"terminalVerificationResult" : { "$ref" : "Typologie.json#/definitions/Exact7Base64BinaryText" }
+			}
+		},
+		"DICO_OBJET_JSON_EventData" : {
+			"type": "object",
+			"properties": {
+				"amount" : { "$ref" : "Typologie.json#/definitions/AmountType" },
+				"eventNature" : { "$ref" : "Typologie.json#/definitions/EventNatureCodeset" },
+				"incompatibilityEventIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"incompatibilityEventReason" : { "$ref" : "Typologie.json#/definitions/Max255Text" },
+				"localDateTime" : { "$ref" : "Typologie.json#/definitions/ISODateTime" },
+				"manualIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"statusCode" : { "$ref" : "Typologie.json#/definitions/StatusCodeCodeset" },
+				"unboundEventIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"unboundEventReason" : { "$ref" : "Typologie.json#/definitions/Max255Text" }
+			}
+		},
+		"DICO_OBJET_JSON_Interchange" : {
+			"type": "object",
+			"properties": {
+				"additionalCode" : { "$ref" : "Typologie.json#/definitions/KeyValueType" },
+				"amount" : { "$ref" : "Typologie.json#/definitions/AmountType" },
+				"ICScode" : { "$ref" : "Typologie.json#/definitions/Max70Text" },
+				"rate" : { "$ref" : "Typologie.json#/definitions/Base25OneRate" }
+			}
+		},
+		"DICO_OBJET_JSON_IssuerScript" : {
+			"type": "object",
+			"properties": {
+				"issuerScriptTemplate1" : { "$ref" : "Typologie.json#/definitions/Max171Base64BinaryText" },
+				"issuerScriptTemplate2" : { "$ref" : "Typologie.json#/definitions/Max171Base64BinaryText" },
+				"scriptBuffer" : { "$ref" : "Typologie.json#/definitions/Max200Base64BinaryText" },
+				"scriptIndex" : { "$ref" : "Typologie.json#/definitions/Max2NumericText" },
+				"scriptNumber" : { "$ref" : "Typologie.json#/definitions/Max2NumericText" },
+				"scriptValue" : { "$ref" : "Typologie.json#/definitions/Max67Base64BinaryText" }
+			}
+		},
+		"DICO_OBJET_JSON_OriginalTransactionData" : {
+			"type": "object",
+			"properties": {
+				"acsTransactionId" : { "$ref" : "Typologie.json#/definitions/Exact36Text" },
+				"authenticationAmount" : { "$ref" : "Typologie.json#/definitions/AmountType" },
+				"authenticationDateTime" : { "$ref" : "Typologie.json#/definitions/ISODateTime" },
+				"authorisationCode" : { "$ref" : "Typologie.json#/definitions/Max6AlphaNumericText" },
+				"cardholderAuthenticationMethod" : { "$ref" : "Typologie.json#/definitions/Exact2Text" },
+				"cardholderAuthenticationValue" : { "$ref" : "Typologie.json#/definitions/Min6Max54Base64BinaryText" },
+				"cardholderAuthenticationValueCalculationMethod" : { "$ref" : "Typologie.json#/definitions/Exact1AlphaNumericText" },
+				"dsTransactionId" : { "$ref" : "Typologie.json#/definitions/Exact36Text" },
+				"electronicCommerceAuthentication" : { "$ref" : "Typologie.json#/definitions/Exact2NumericText" },
+				"merchantName" : { "$ref" : "Typologie.json#/definitions/Max40Text" },
+				"originalUniqueIdentifier" : { "$ref" : "Typologie.json#/definitions/Max50Text" },
+				"securedRemotePaymentArchitectureResult" : { "$ref" : "Typologie.json#/definitions/Max4Text" },
+				"securedRemotePaymentArchitectureResultExtension" : { "$ref" : "Typologie.json#/definitions/Max10Text" },
+				"technicalInfoTransactionUuid" : { "$ref" : "Typologie.json#/definitions/Max19AlphaNumericText" },
+				"technicalInfoTransmissionDateTime" : { "$ref" : "Typologie.json#/definitions/ISODateTime" },
+				"technicalInfoTransmittingServerId" : { "$ref" : "Typologie.json#/definitions/Exact4Text" },
+				"threeDsProtocolVersion" : { "$ref" : "Typologie.json#/definitions/ThreeDSProtocolVersionCodeset" },
+				"transactionReference" : { "$ref" : "Typologie.json#/definitions/Max35Text" },
+				"transmissionGmtDateTime" : { "$ref" : "Typologie.json#/definitions/ISODateTime" }
+			}
+		},
+		"DICO_OBJET_JSON_Response" : {
+			"type": "object",
+			"properties": {
+				"authorisationCode" : { "$ref" : "Typologie.json#/definitions/Max6AlphaNumericText" },
+				"responseCode" : { "$ref" : "Typologie.json#/definitions/ResponseCodeCodeset" },
+				"responseDateTime" : { "$ref" : "Typologie.json#/definitions/ISODateTime" }
+			}
+		},
+		"DICO_OBJET_JSON_SchemeFees" : {
+			"type": "object",
+			"properties": {
+				"schemeFeesDetails" : { "$ref" : "Typologie.json#/definitions/SchemeFeesType" },
+				"totalAmount" : { "$ref" : "Typologie.json#/definitions/AmountType" }
+			}
+		},
+		"DICO_OBJET_JSON_Security" : {
+			"type": "object",
+			"properties": {
+				"bdkKeyIdentifier" : { "$ref" : "Typologie.json#/definitions/KeyC2PDescriptionType" },
+				"dataSource" : { "$ref" : "Typologie.json#/definitions/Max5462Base64BinaryText" },
+				"dataUsedForSign" : { "$ref" : "Typologie.json#/definitions/Max5462Base64BinaryText" },
+				"diversificationValue" : { "$ref" : "Typologie.json#/definitions/Min11Max22Base64BinaryText" },
+				"dynKeyIdentifier" : { "$ref" : "Typologie.json#/definitions/KeyC2PDescriptionType" },
+				"encryptionAlgorithm " : { "$ref" : "Typologie.json#/definitions/EncryptionAlgorithmCodeset" },
+				"kbpkKeyIdentifier" : { "$ref" : "Typologie.json#/definitions/KeyC2PDescriptionType" },
+				"kdkKeyIdentifier" : { "$ref" : "Typologie.json#/definitions/KeyC2PDescriptionType" },
+				"keyingMaterialSecurityData" : { "$ref" : "Typologie.json#/definitions/Max340Base64BinaryText" },
+				"keyLength" : { "$ref" : "Typologie.json#/definitions/Max4NumericText" },
+				"keySerialNumber" : { "$ref" : "Typologie.json#/definitions/Min14Max16Base64BinaryText" },
+				"kscKeyIdentifier" : { "$ref" : "Typologie.json#/definitions/KeyC2PDescriptionType" },
+				"ktKeyIdentifier" : { "$ref" : "Typologie.json#/definitions/KeyC2PDescriptionType" },
+				"macAlgorithm" : { "$ref" : "Typologie.json#/definitions/Max2NumericText" },
+				"macLength" : { "$ref" : "Typologie.json#/definitions/Max2NumericText" },
+				"macValue" : { "$ref" : "Typologie.json#/definitions/Min6Max86Base64BinaryText" },
+				"maskGeneratorAlgorithm" : { "$ref" : "Typologie.json#/definitions/MaskGeneratorAlgorithmCodeset" },
+				"paddingMethod" : { "$ref" : "Typologie.json#/definitions/Max2NumericText" },
+				"partialHash" : { "$ref" : "Typologie.json#/definitions/Min27Max86Base64BinaryText" },
+				"partialHashLength" : { "$ref" : "Typologie.json#/definitions/Exact8NumericText" },
+				"pinBlockEncryptionFormat" : { "$ref" : "Typologie.json#/definitions/pinBlockEncryptionFormatCodeset" },
+				"pinBlockFormat" : { "$ref" : "Typologie.json#/definitions/PinBlockFormatCodeset" },
+				"pinVerificationResult" : { "$ref" : "Typologie.json#/definitions/PinVerificationResultCodeset" },
+				"saltLength" : { "$ref" : "Typologie.json#/definitions/Exact2NumericText" },
+				"signature" : { "$ref" : "Typologie.json#/definitions/Max683Base64BinaryText" },
+				"signatureAlgorithm" : { "$ref" : "Typologie.json#/definitions/SignatureAlgorithmCodeset" },
+				"signatureDigestAlgorithm" : { "$ref" : "Typologie.json#/definitions/SignatureDigestAlgorithmCodeset" },
+				"signatureKeyIdentifier" : { "$ref" : "Typologie.json#/definitions/KeyC2PDescriptionType" },
+				"tr31AdditionalData" : { "$ref" : "Typologie.json#/definitions/Min2Max226Text" },
+				"tr31KeyBlock" : { "$ref" : "Typologie.json#/definitions/Min72Max296Text" },
+				"tr31KeyFunction" : { "$ref" : "Typologie.json#/definitions/Exact1Text" },
+				"tr31KeyVersion" : { "$ref" : "Typologie.json#/definitions/Exact2AlphaNumericText" }
+			}
+		},
+		"DICO_OBJET_JSON_ThreeDs" : {
+			"type": "object",
+			"properties": {
+				"threeDsAuthenticationCategory" : { "$ref" : "Typologie.json#/definitions/Exact2AlphaNumericText" },
+				"threeDsComponentsAvailability" : { "$ref" : "Typologie.json#/definitions/Exact1AlphaNumericText" },
+				"threeDsIndicator" : { "$ref" : "Typologie.json#/definitions/ThreeDSIndicatorCodeset" },
+				"threeDsMerchantRequestAuthentication" : { "$ref" : "Typologie.json#/definitions/Exact2NumericText" },
+				"threeDsProtocolVersion" : { "$ref" : "Typologie.json#/definitions/ThreeDSProtocolVersionCodeset" },
+				"threeDsProtocolVersionSchemeSpecific" : { "$ref" : "Typologie.json#/definitions/Max7AlphaNumericText" },
+				"threeDsResultsCardHolderAuthentication" : { "$ref" : "Typologie.json#/definitions/Exact1Text" },
+				"threeDsResultsNomenclature" : { "$ref" : "Typologie.json#/definitions/NetworkCodeset" },
+				"threeDsScore" : { "$ref" : "Typologie.json#/definitions/Max2Text" },
+				"threeDsTransactionCancellationIndicator" : { "$ref" : "Typologie.json#/definitions/Exact2NumericText" },
+				"threeDsTransactionStatusReason" : { "$ref" : "Typologie.json#/definitions/Exact2NumericText" }
+			}
+		},
+		"DICO_OBJET_JSON_TransactionDetails" : {
+			"type": "object",
+			"properties": {
+				"accountFromUsage" : { "$ref" : "Typologie.json#/definitions/AccountUsageCodeset" },
+				"accountToUsage" : { "$ref" : "Typologie.json#/definitions/AccountUsageCodeset" },
+				"accountUsage" : { "$ref" : "Typologie.json#/definitions/AccountUsageCodeset" },
+				"additionalAmount" : { "$ref" : "Typologie.json#/definitions/AmountType" },
+				"additionnalInformationForImmediateAction" : { "$ref" : "Typologie.json#/definitions/AdditionnalInformationForImmediateActionCodeset" },
+				"agreementId" : { "$ref" : "Typologie.json#/definitions/Exact4Text" },
+				"applicationTransactionCounter" : { "$ref" : "Typologie.json#/definitions/Exact3Base64BinaryText" },
+				"authorizedAmount" : { "$ref" : "Typologie.json#/definitions/AmountType" },
+				"billingAmount" : { "$ref" : "Typologie.json#/definitions/AmountType" },
+				"cardBrandApplied" : { "$ref" : "Typologie.json#/definitions/BrandCodeset" },
+				"cardBrandForcingIndicator" : { "$ref" : "Typologie.json#/definitions/trueFalseIndicator" },
+				"cardholderAuthenticationValue" : { "$ref" : "Typologie.json#/definitions/Min6Max54Base64BinaryText" },
+				"cardholderTotalAmount" : { "$ref" : "Typologie.json#/definitions/AmountType" },
+				"cardholderVerificationMethodResult" : { "$ref" : "Typologie.json#/definitions/Exact4Base64BinaryText" },
+				"cardSecurityCodeVerificationResultsOrigin" : { "$ref" : "Typologie.json#/definitions/CardSecurityCodeVerificationResultsOriginCodeset" },
+				"cardSecurityCodeVerificationResultsText" : { "$ref" : "Typologie.json#/definitions/Exact2Base64BinaryText" },
+				"contactlessTerminalProcessingResults" : { "$ref" : "Typologie.json#/definitions/Exact7Base64BinaryText" },
+				"disputeAuditTrailTransactionEligibilityIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"disputeTechnicalInternalId" : { "$ref" : "Typologie.json#/definitions/Max19NumericText" },
+				"duplicateProcessedIndicator" : { "$ref" : "Typologie.json#/definitions/trueFalseIndicator" },
+				"ecommerceIndicator" : { "$ref" : "Typologie.json#/definitions/Max3AlphaNumericText" },
+				"encryptedPinBlock" : { "$ref" : "Typologie.json#/definitions/Min11Max22Base64BinaryText" },
+				"fileNumber" : { "$ref" : "Typologie.json#/definitions/Max12Text" },
+				"immediateAction" : { "$ref" : "Typologie.json#/definitions/ImmediateActionCodset" },
+				"initialGmtDateTime" : { "$ref" : "Typologie.json#/definitions/ISODateTime" },
+				"internalPricing" : { "$ref" : "Typologie.json#/definitions/PercentageRate" },
+				"IssuerProprietaryData" : { "$ref" : "Typologie.json#/definitions/Max43Base64BinaryText" },
+				"lowValueExemptionIndicator" : { "$ref" : "Typologie.json#/definitions/Exact1AlphaNumericText" },
+				"microchipProcessingResult" : { "$ref" : "Typologie.json#/definitions/Exact2NumericText" },
+				"multiplePaymentValidityDate" : { "$ref" : "Typologie.json#/definitions/ISODate" },
+				"nextAction" : { "$ref" : "Typologie.json#/definitions/NextActionCodeset" },
+				"nonrefundReason" : { "$ref" : "Typologie.json#/definitions/Max255Text" },
+				"originalUniqueIdentifier" : { "$ref" : "Typologie.json#/definitions/Max50Text" },
+				"preAuthorizationTimeLimit" : { "$ref" : "Typologie.json#/definitions/Max6NumericText" },
+				"preclearingTransactionNature" : { "$ref" : "Typologie.json#/definitions/preclearingTransactionNatureCodeset" },
+				"productQuantity" : { "$ref" : "Typologie.json#/definitions/Exact2NumericText" },
+				"receivingId" : { "$ref" : "Typologie.json#/definitions/Max11NumericText" },
+				"recoveryMode" : { "$ref" : "Typologie.json#/definitions/RecoveryModeCodeset" },
+				"refundIndicator" : { "$ref" : "Typologie.json#/definitions/TrueFalseIndicator" },
+				"refundNature" : { "$ref" : "Typologie.json#/definitions/RefundNatureCodeset" },
+				"reversalReason" : { "$ref" : "Typologie.json#/definitions/Max5NumericText" },
+				"saleReference" : { "$ref" : "Typologie.json#/definitions/Max35Text" },
+				"schemeFeesAmount" : { "$ref" : "Typologie.json#/definitions/FeesType" },
+				"settlementDate" : { "$ref" : "Typologie.json#/definitions/ISODate" },
+				"splitPaymentNumber" : { "$ref" : "Typologie.json#/definitions/Exact2NumericText" },
+				"splitPaymentTotalNumber" : { "$ref" : "Typologie.json#/definitions/Exact2NumericText" },
+				"statusCode" : { "$ref" : "Typologie.json#/definitions/StatusCodeCodeset" },
+				"statusLabel" : { "$ref" : "Typologie.json#/definitions/Max255Text" },
+				"storedData " : { "$ref" : "Typologie.json#/definitions/Max8000Text" },
+				"terminalTransactionQualifiers" : { "$ref" : "Typologie.json#/definitions/Exact6Base64BinaryText" },
+				"tokenAuthenticationVerificationValue" : { "$ref" : "Typologie.json#/definitions/Min6Max54Base64BinaryText" },
+				"totalAmount" : { "$ref" : "Typologie.json#/definitions/AmountType" },
+				"vrolTransactionReference" : { "$ref" : "Typologie.json#/definitions/Max35AlphaNumericText" }
+			}
+		},
+		"DICO_OBJET_JSON_TransactionIdentification" : {
+			"type": "object",
+			"properties": {
+				"cryptogramDateTime" : { "$ref" : "Typologie.json#/definitions/ISODateTime" },
+				"ecommerceTransactionId" : { "$ref" : "Typologie.json#/definitions/Min6Max54Base64BinaryText" },
+				"localDateTime" : { "$ref" : "Typologie.json#/definitions/ISODateTime" },
+				"transactionReference" : { "$ref" : "Typologie.json#/definitions/Max35Text" },
+				"transmissionGmtDateTime" : { "$ref" : "Typologie.json#/definitions/ISODateTime" }
+			}
+		}
+	}
+}

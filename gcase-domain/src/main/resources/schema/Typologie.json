@@ -1,0 +1,1548 @@
+{
+	"$schema": "http://json-schemas.org/draft/schema#",
+
+	"$comment01": "--------",
+	"$comment02": "01/04/2025 16:31:07 : Produit a partir de la version v2 du programme ISO20022_Types_Excel2JSON",
+	"$comment03": "Fichier Source      : D:/PARTECIS/Data Services Exploit - Etudes/ISO20022/LIVRAISONS/DICO_ESTREEM_v2508",
+	"$comment04": "Fichier Destination : D:/PARTECIS/Data Services Exploit - Etudes/ISO20022/LIVRAISONS/Typologie_250401_163107.json",
+	"$comment05": "--------",
+
+	"$title": "ISO20022JvTypes",
+	"definitions": {
+		"$comment10": "-----------------",
+		"$comment11": "Types structures",
+		"$comment12": "-----------------",
+		"AdditionalDataType": {
+			"type" : "object",
+			"properties":{
+				"typeData":{"$ref" : "#/definitions/TypeDataCodeset" },
+				"value":{"$ref" : "#/definitions/Max3000Text" }
+			}
+		},
+		"AmountType": {
+			"type" : "object",
+			"properties":{
+				"amountDescription":{"$ref" : "#/definitions/Max35Text" },
+				"amount":{"$ref" : "#/definitions/ImpliedCurrencyAndAmount" },
+				"currency":{"$ref" : "#/definitions/ISO3NumericCurrencyCode" },
+				"exchangeRate":{"$ref" : "#/definitions/Base25OneRate" },
+				"originalCurrency":{"$ref" : "#/definitions/ISO3NumericCurrencyCode" },
+				"conversionDateTime":{"$ref" : "#/definitions/ISODateTime" }
+			}
+		},
+		"FeesType": {
+			"type" : "object",
+			"properties":{
+				"feesNature":{"$ref" : "#/definitions/FeesNatureCodeset" },
+				"feesDescription":{"$ref" : "#/definitions/Max35Text" },
+				"feesOtherNature":{"$ref" : "#/definitions/Max35Text" },
+				"feesProgram":{"$ref" : "#/definitions/Max35Text" },
+				"feesDescriptor":{"$ref" : "#/definitions/Max35Text" },
+				"amount":{"$ref" : "#/definitions/ImpliedCurrencyAndAmount" },
+				"debitCredit":{"$ref" : "#/definitions/DebitCreditCodeset" },
+				"currency":{"$ref" : "#/definitions/ISO3NumericCurrencyCode" },
+				"exchangeRate":{"$ref" : "#/definitions/Base25OneRate" },
+				"originalCurrency":{"$ref" : "#/definitions/ISO3NumericCurrencyCode" },
+				"conversionDateTime":{"$ref" : "#/definitions/ISODateTime" }
+			}
+		},
+		"KeyC2PDescriptionType": {
+			"type" : "object",
+			"properties":{
+				"keyType":{"$ref" : "#/definitions/Exact2Text" },
+				"keyOwner":{"$ref" : "#/definitions/Exact10Text" },
+				"additionalKeyIdentifier":{"$ref" : "#/definitions/Exact24Text" },
+				"keyVersionNumber":{"$ref" : "#/definitions/Exact2Text" }
+			}
+		},
+		"KeyValueType": {
+			"type" : "object",
+			"properties":{
+				"key":{"$ref" : "#/definitions/Max70Text" },
+				"value":{"$ref" : "#/definitions/Max70Text" }
+			}
+		},
+		"PhoneNumberType": {
+			"type" : "object",
+			"properties":{
+				"phoneNumber":{"$ref" : "#/definitions/PhoneNumberText" }
+			}
+		},
+		"PostalAddressType": {
+			"type" : "object",
+			"properties":{
+				"addressCategory":{"$ref" : "#/definitions/AddressCategoryCodeset" },
+				"department":{"$ref" : "#/definitions/Max70Text" },
+				"subDepartment":{"$ref" : "#/definitions/Max70Text" },
+				"streetName":{"$ref" : "#/definitions/Max70Text" },
+				"buildingNumber":{"$ref" : "#/definitions/Max16Text" },
+				"postCode":{"$ref" : "#/definitions/Max16Text" },
+				"townName":{"$ref" : "#/definitions/Max70Text" },
+				"countrySubdivisionMinorCode":{"$ref" : "#/definitions/ISOCountrySubdivisionCode" },
+				"countrySubdivisionMajorCode":{"$ref" : "#/definitions/ISOCountrySubdivisionCode" },
+				"countrySubdivisionMinorName":{"$ref" : "#/definitions/Max50Text" },
+				"countrySubdivisionMajorName":{"$ref" : "#/definitions/Max50Text" },
+				"countryCode":{"$ref" : "#/definitions/ISO3NumericCountryCode" },
+				"countryName":{"$ref" : "#/definitions/Max70Text" },
+				"postalAddressAdditionalData":{"$ref" : "#/definitions/Max70Text" }
+			}
+		},
+		"ProcessorCardDataType": {
+			"type" : "object",
+			"properties":{
+				"cardLevel":{"$ref" : "#/definitions/CardLevelCodeset" },
+				"cardUsage":{"$ref" : "#/definitions/CardUsageCodeset" }
+			}
+		},
+		"ProcessorIssuerDataType": {
+			"type" : "object",
+			"properties":{
+				"issuerPlace":{"$ref" : "#/definitions/IssuerPlaceCodeset" },
+				"issuerZone":{"$ref" : "#/definitions/IssuerZoneCodeset" }
+			}
+		},
+		"SchemeFeesType": {
+			"type" : "object",
+			"properties":{
+				"amount":{"$ref" : "#/definitions/AmountType" },
+				"rechargeable":{"$ref" : "#/definitions/TrueFalseIndicator" },
+				"schemeFeesCaterory":{"$ref" : "#/definitions/SchemeFeesCategoryCodeset" },
+				"billingId":{"$ref" : "#/definitions/Max20Text" },
+				"schemeFeesLabel":{"$ref" : "#/definitions/Max70Text" },
+				"schemeFeesGroup":{"$ref" : "#/definitions/Max30Text" },
+				"schemeFeesNature":{"$ref" : "#/definitions/SchemeFeesNatureCodeset" },
+				"schemeFeesMode":{"$ref" : "#/definitions/SchemeFeesModeCodeset" },
+				"tieredVolume":{"$ref" : "#/definitions/Max19Text" },
+				"tieredRangeAppliedLow":{"$ref" : "#/definitions/Max19Text" },
+				"tieredRangeAppliedHigh":{"$ref" : "#/definitions/Max19Text" },
+				"regionApplied":{"$ref" : "#/definitions/MastercardRegionCodeset" },
+				"schemeFeesRate":{"$ref" : "#/definitions/Base25OneRate" },
+				"schemeFeesAmountNature":{"$ref" : "#/definitions/SchemeFeesAmountNatureCodeset" },
+				"schemeFeesAmount":{"$ref" : "#/definitions/AmountType" }
+			}
+		},
+		"$comment20": "-----------------",
+		"$comment21": "Codes Set",
+		"$comment22": "-----------------",
+		"AcceptanceChannelCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["FFPM","RMPM","AIPM","TLPM","UTPM","QCPM","PAPM","FTPM"]
+			}
+		},
+		"AccountFundingSourceCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["CRDT","DEBT","CHAR","PREP","DEFR"]
+			}
+		},
+		"AccountNameVerificationNatureCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["PEAI","PRAI"]
+			}
+		},
+		"AccountOwnerNatureCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["PRIA","SECA"]
+			}
+		},
+		"AccountTypeCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["CRDT","DEBT"]
+			}
+		},
+		"AccountUsageCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["PWNF","SAAC","DEAC","CRAC","DECL","DEDA","CHAC","PRAC"]
+			}
+		},
+		"AcknowledgementRequestIndicatorCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NOAR","ACRE","ARET","POAC","PAAT","NARR","NAWR","NAET"]
+			}
+		},
+		"ActivationCardCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["ACTI","DESA","NOMO"]
+			}
+		},
+		"AdditionnalInformationForImmediateActionCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NOAI","FORE","COIP","ODRS","ETNS","ACFI","INPT","RPTT","TRRD","RERR","CWNR"]
+			}
+		},
+		"AddressCategoryCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["ADDR","PBOX","HOME","BIZZ","MLTO","DLVY"]
+			}
+		},
+		"AddServiceReportDataCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NSPR","NPCE","NPMN","NPMO","NPFO","NPUS"]
+			}
+		},
+		"AddServiceReportIDCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["IDAR","IDSC","IDTK","IDNR"]
+			}
+		},
+		"ApplicationCryptogramProcessingInformationCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["UCAC","ICAC","VCAC","NSBI","VAAC"]
+			}
+		},
+		"ApplicationSelectionIndicatorCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["DEFT","CRHD"]
+			}
+		},
+		"AttendanceContextCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["ATTD","SATT","UATT"]
+			}
+		},
+		"BrandCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["CBFR","VISA","MACD","DISC","UPIC","VPAY","ELEC","MSTR","JCB0","REPV"]
+			}
+		},
+		"BuyingMethodCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["INAP","BRWS"]
+			}
+		},
+		"CardAcceptorArchitectureCategoryCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["AUTO","DICO","DICL"]
+			}
+		},
+		"CardApplicationCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["EMVC","CIMG"]
+			}
+		},
+		"CardDataEntryModeCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NOTS","MANU","MAGS","OPTI","CHON","CUCD","FILE","CHFM","CHFG","SERV","MAGO","CUMD","NOTS","MAGS","CCEC","CCMD","ICCR","MAAR","PVBS"]
+			}
+		},
+		"CardholderAddressCheckingInformationCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["PAFM","PAPM","PANM","NPAD","RTRY"]
+			}
+		},
+		"CardholderAuthenticationCapabilitiesCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NOEA","AUTP","EAOS","OTHR","RFPU"]
+			}
+		},
+		"CardholderPickUpCapabilitiesCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NONE","PIUP"]
+			}
+		},
+		"CardLevelCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["PRIV","TEST","PAIU","RETU","PARE"]
+			}
+		},
+		"CardProductCodeCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["CNAR","CNPR","CNAP","PRAS","CPAS","CASM"]
+			}
+		},
+		"CardReadingCapabilitiesCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["UNKW","MANU","MAGS","CCEC","CCMC","ICCR","KEYI","CCCR","REPV","NCEC","PBAS"]
+			}
+		},
+		"CardSecurityCodeIndicatorCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["CVDC"]
+			}
+		},
+		"CardSecurityCodePresenceCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NSTM","CSCP","CSPI","DCVP","DCVF","CSNI"]
+			}
+		},
+		"CardSecurityCodeVerificationCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["VRCR","VRVR"]
+			}
+		},
+		"CardSecurityCodeVerificationResultsOriginCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["CISS","STIN"]
+			}
+		},
+		"CardTypeCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["CRDT","DEBT","CTPP","CTUN"]
+			}
+		},
+		"CardUsageCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["PRIV","TEST","BANK"]
+			}
+		},
+		"CardWriteCapabilitiesCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["CTUN","NCWC","MAGS","ICCR","RFPU"]
+			}
+		},
+		"COFActionCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["ADDC","KEEP"]
+			}
+		},
+		"CompanyRegistrationNumberCategoryCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["SIRE","SIRF","OTHR"]
+			}
+		},
+		"CountryZoneCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["FRDT","EURO","AFRC","NOAM","SOAM","ASIA","OCEA"]
+			}
+		},
+		"CryptogramProcessingInformationCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["CVNC","CVCI","CVCC","CVUN"]
+			}
+		},
+		"DebitCreditCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["CRDT","DEBT"]
+			}
+		},
+		"DigitalCommerceDomainIdCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["MACD","ACQU","ISSU","REFU"]
+			}
+		},
+		"DigitalCommerceProgramCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["SQRX","C2PA","BIOM","NGEN","REFU"]
+			}
+		},
+		"DisputeConditionCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["FCTC","FAID","DETC","CACO","COMU","FRDF","DEMA","DOUB","RNDI","RPDI","MOER","CNPA","CEAM","CVSV","CAEC","COPP","RPAR"]
+			}
+		},
+		"DisputeQualificationCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["CONT","COFA","LITC","OPME","PEVO","REGU"]
+			}
+		},
+		"DomainIndicatorCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["ACQU","ISSU"]
+			}
+		},
+		"ElectronicCommerceAuthenticationNature":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["ACNS","ACNO","ACXX","ACMO"]
+			}
+		},
+		"EncryptionAlgorithmCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["3DES","A128","A192","A256"]
+			}
+		},
+		"EventNatureCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["EDDJ","ACJU","ACRE","EIMP","RERE","REAR","INRE","CRDC","CLSC","EDRE","JURE","DDNR","DPCV","REVI","REVC","ALEM","COEM","ANDI","PARE","PAAC","PAAP","PARE","REPA","ARBR","ARBA","ARBF","DEAR","ARDF","ARDD","SPDE","REDI","EXVR","ANIE","RE1I","RE1R","AC1I","RA1I","EMRE","RE2I","AC2I","RA2I","EMAR","RDJU","REIM","REIR","ACIM","REAI","EMRC","EMAC","REDJ","PAGA","PAPC","ADFA","ADDC","CREC","CREM","CREV","TITL","EDRA","ERNA","RDRA","RDRC","RDRE","AAIM","CACD","CACC","CSCO","EMDR","REDR","DRAC","DRRE","RRSI","RDRP","RDRP","RDRP"]
+			}
+		},
+		"ExtendedMessageNatureCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["PRNT","DISP","PRDI","PRCO","DICO","PDCO","PRAO","DIAO","PDAO","PRAC","DIAC","PDAC"]
+			}
+		},
+		"FeesNatureCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["ITPC","OISA","ITMA","ITMI"]
+			}
+		},
+		"FieldConversionEntitySourceCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NTWK","VISA","MACD","JCB0","DISC","UPIC","OTHR"]
+			}
+		},
+		"ImmediateActionCodset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["APRV","DECL","RFST","RFPT"]
+			}
+		},
+		"IncorrectFieldErrorCodeCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["VAER","FRER","MMFI","FRMT","WRPF"]
+			}
+		},
+		"IssuerPlaceCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["ENPL","HRPL"]
+			}
+		},
+		"IssuerZoneCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NATI","ETRA"]
+			}
+		},
+		"MaskGeneratorAlgorithmCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Max12Text",
+				"enum" : ["MGF1-SHA256","MGF1-SHA384","MGF1-SHA512","MGF1-SHA1"]
+			}
+		},
+		"MastercardRegionCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["ASPA","CNDA","DMST","EUNS","EUSE","LACA","EMEA","USAM"]
+			}
+		},
+		"MerchantCategoryCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["PYFS","PYFA","MKPL","IPRV","STND","SBMT"]
+			}
+		},
+		"MerchantSchemeTokenizationIndicatorCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["COFT"]
+			}
+		},
+		"MessageDisplayPrintCapabilitiesCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["UNKW","NONE","PRNT","DISP","PRDI"]
+			}
+		},
+		"MessageFunctionCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Max40Text",
+				"enum" : ["PaymentAutorisationRequest","PaymentAutorisationResponse","CardInformationRequest","CardInformationResponse","FraudFirstControlRequest","FraudFirstControlResponse","FraudSecondControlRequest","FraudSecondControlResponse","FraudAdvice","InfopanRequest","InfopanResponse","AutorisationEvent","ReversalEvent"]
+			}
+		},
+		"MessageToTransactionInitiatorCtrlCharacterCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["RSVD","PRNT","DSPL","PRDS","PRCO","DSCO ","PDCO","PFAO","DFAO","PDAO","PRAC","DIAC","PDAC","REPV"]
+			}
+		},
+		"ModifiedElectronicCommerceAuthentificationCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NOAC","AUTC","ACIM"]
+			}
+		},
+		"NetworkCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["CBFR","MACD","VISA","DISC","JCB0","UPIC","REFU","INTR"]
+			}
+		},
+		"NetworkServiceCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["UNKN","INWR","ONUS","ACIN","GATE","ISAS","AGAT","IGAT","PTCS","DETO","ESAR","ESIR"]
+			}
+		},
+		"NetworkSubServiceCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact6Text",
+				"enum" : ["NNRISX","NNRISU"]
+			}
+		},
+		"NextActionCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NONE","RFPU"]
+			}
+		},
+		"PaymentCategoryCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["FFPM","CTLS","RMTE","RMOE","RMPO","RMMO","RMIT","RMRC","RMTV"]
+			}
+		},
+		"PaymentProtocolCategoryCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["CB2A"]
+			}
+		},
+		"PaymentProtocolVersionCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["V11X","V150","V160","V165"]
+			}
+		},
+		"PaymentSolutionProofCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["EMV0","SECM"]
+			}
+		},
+		"PaymentUseCaseCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["SNGL","RCFX","INST","SHIP","RCOT","RERE","PREA","PTRL"]
+			}
+		},
+		"PinBlockEncryptionFormatCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : [""]
+			}
+		},
+		"PinBlockFormatCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["ISO0","ISO1","ISO2","ISO3","ISO4","ISO5"]
+			}
+		},
+		"PinEntryCapabilityCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NOTS","TACP","TNOP","MPPI"]
+			}
+		},
+		"PinReadingCapabilitiesCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NONE","UNKW","FOCH","FICH","SICH","SECH","EICH","NICH"]
+			}
+		},
+		"PinVerificationResultCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : [""]
+			}
+		},
+		"POIInformationCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["MPOS","SPOC","CPOC","MPOC"]
+			}
+		},
+		"PreclearingTransactionNatureCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["PCRG","PCFA","PCFC"]
+			}
+		},
+		"ReasonInformationEntitySourceCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NTWK","VISA","MACD","SICB","ACQU","JCB0","DISC","UPIC","OTHR"]
+			}
+		},
+		"RecoveryModeCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NORE","ISSU","INSU","ACQU","AUTA","CLDE"]
+			}
+		},
+		"RefundDecisionCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["REFU","NORE","PARE","DERM"]
+			}
+		},
+		"RefundNatureCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["CLNT","ESTB","INSU","NPS0"]
+			}
+		},
+		"ResponseCodeCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["APPV","RFCI","INMC","PKUP","DNHR","EROR","PUPC","HRID","APPA","INVD","IAMT","ICDN","NOSI","CSCL","RETS","IRSP","NOAT","FUNR","ULRF","DFUR","FUFE","FUFL","FUNS","FRME"]
+			}
+		},
+		"SchemeFeesAmountNatureCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["FIXD","MINI","MAXI"]
+			}
+		},
+		"SchemeFeesCategoryCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["QTTY","AMNT"]
+			}
+		},
+		"SchemeFeesModeCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["STDD","REGN","TIER"]
+			}
+		},
+		"SchemeFeesNatureCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["OPER","LNCE","PROC","SUBS","PNLT"]
+			}
+		},
+		"SecurityErrorCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["ECKN","ECIE","ECUL","ECKE","ECSD","ECRE"]
+			}
+		},
+		"ServiceConditionCodeCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["STDR","CUNP","UTAR","MESU","CPCA","TLDR","MTOR","CUIV","SUFR","SERE","CUTE","UTUR","FLCO","MAOR","TLOR"]
+			}
+		},
+		"SignatureAlgorithmCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact5Text",
+				"enum" : ["RS256","RS384","RS512","ES256","ES384","ES512","PS256","PS384","PS512"]
+			}
+		},
+		"SignatureDigestAlgorithmCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Max10Text",
+				"enum" : ["SHA256","SHA384","SHA512","SHA1","SHA3-224","SHA3-256","SHA3-384","SHA3-512","SHAKE128","SHAKE256"]
+			}
+		},
+		"StatusChangeReasonCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["MAFC","APFC","AUFC","FOCO","MAAN","AUAN","ALRD","ALDR","AUCL","MACL","RECL","MARE","AUPU"]
+			}
+		},
+		"StatusCodeCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["INCO","COMP","ANLY","DERM","RECA","CLOS","REOP","PURG","TBPR","WAIT","TERM"]
+			}
+		},
+		"StatusOfMessageDisplayPrintCapabilityCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["UNKW","NONE","PRTU","DISU","PADU"]
+			}
+		},
+		"StoredDataCategoryCodeSet":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Max40Text",
+				"enum" : ["InternAutorisationRequest","SchemeAutorisationRequest","MerchantAutorisationRequest","InternAutorisationResponse","SchemeAutorisationResponse","MerchantAutorisationResponse"]
+			}
+		},
+		"SystemAuthenticatingTheCardholderCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["NOAT","ICCR","TERM","AUTP","ACPT","OTHR","RFPU"]
+			}
+		},
+		"ThreeDSIndicatorCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact6Text",
+				"enum" : ["3DSIAA","3DSIAB","3DSIAC","3DSIAD","3DSIAE","3DSIAF","3DSIAG","3DSIAH","3DSIAI","3DSIAJ","3DSIAK","3DSIAL","3DSIAM","3DSIAN","3DSIAO","3DSIAP","3DSIAQ","3DSIAR","3DSIAS","3DSIAT","3DSIAU","3DSIAV","3DSIAW","3DSIAX","3DSIAY","3DSIAZ","3DSIBA"]
+			}
+		},
+		"ThreeDSProtocolVersionCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["UNKW","3DS1","3DS2"]
+			}
+		},
+		"TraceabilityServiceCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["QUAL","ICCL","SFCL"]
+			}
+		},
+		"TransactionNatureCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["PUGS","ATMW","QUCA","CACP","MACA","CRED","QCAR","AVFI","CARE","FTDE","FTCR","FTWC","AICE","WCDI","VMAA","FIMA"]
+			}
+		},
+		"TypeDataCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["COMM"]
+			}
+		},
+		"UUIDContainerCategoryCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["DSID","ACSI"]
+			}
+		},
+		"VFNCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["VERI","FAIL","NOTP"]
+			}
+		},
+		"WalletNomenclatureCodeset":{
+			"type" : "array",
+			"items":{
+				"type" : "#/definitions/Exact4Text",
+				"enum" : ["CBOT","MCIN","REFU"]
+			}
+		},
+		"$comment30": "-----------------",
+		"$comment31": "Types Simples",
+		"$comment32": "-----------------",
+		"4Or6NumericText": {
+			"description": "Number of objects represented as a positive integer.",
+			"type": "string",
+			"pattern": "([0-9]{4}|[0-9]{6})"
+		},
+		"Base25OneRate": {
+			"description": "Rate expressed as a decimal",
+			"type": "string",
+			"pattern": "[0-9]{1,25}(\\.?[0-9]{0,13})?"
+		},
+		"DecimalRate": {
+			"description": "decimal Amount",
+			"type": "string",
+			"pattern": "[0-9]{1,8}(\\.?[0-9]{0,7})?"
+		},
+		"Exact10Text": {
+			"description": "10 alphanumeric  and special characters",
+			"type": "string",
+			"minLength": "10",
+			"maxLength": "10"
+		},
+		"Exact11Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with an exact length of 11 digits (8 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{11}"
+		},
+		"Exact12NumericText": {
+			"description": "Specifies a numeric string with an exact length of 12 digits.",
+			"type": "string",
+			"pattern": "[0-9]{12}"
+		},
+		"Exact15AlphaNumericText": {
+			"description": "15 alphanumeric characters",
+			"type": "string",
+			"pattern": "[0-9A-Za-z]{15}"
+		},
+		"Exact15Text": {
+			"description": "15 alphanumeric  and special characters",
+			"type": "string",
+			"minLength": "15",
+			"maxLength": "15"
+		},
+		"Exact16AlphaNumericText": {
+			"description": "16 alphanumeric characters",
+			"type": "string",
+			"pattern": "[0-9A-Za-z]{16}"
+		},
+		"Exact1AlphaNumericText": {
+			"description": "1 alphanumeric character",
+			"type": "string",
+			"pattern": "[0-9A-Za-z]{1}"
+		},
+		"Exact1NumericText": {
+			"description": "Specifies a numeric string with an exact length of 1 digits.",
+			"type": "string",
+			"pattern": "[0-9]{1}"
+		},
+		"Exact1Text": {
+			"description": "Specifies a string with an exact length of 1 character",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "1"
+		},
+		"Exact24Text": {
+			"description": "24 alphanumeric  and special characters",
+			"type": "string",
+			"minLength": "24",
+			"maxLength": "24"
+		},
+		"Exact26Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with an exact length of 26 digits (19 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{26}"
+		},
+		"Exact27Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with an exact length of 27 digits (20 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{27}"
+		},
+		"Exact2AlphaNumericText": {
+			"description": "2 alphanumeric characters",
+			"type": "string",
+			"pattern": "[0-9A-Za-z]{2}"
+		},
+		"Exact2Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with an exact length of 2 digits. (1 byte)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{2}"
+		},
+		"Exact2NumericText": {
+			"description": "Specifies a numeric string with an exact length of 2 digits.",
+			"type": "string",
+			"pattern": "[0-9]{2}"
+		},
+		"Exact2Text": {
+			"description": "2 alphanumeric  and special characters",
+			"type": "string",
+			"minLength": "2",
+			"maxLength": "2"
+		},
+		"Exact36Text": {
+			"description": "36 alphanumeric  and special characters",
+			"type": "string",
+			"minLength": "36",
+			"maxLength": "36"
+		},
+		"Exact3AlphaNumericText": {
+			"description": "3 alphanumeric characters",
+			"type": "string",
+			"pattern": "[0-9A-Za-z]{3}"
+		},
+		"Exact3Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with an exact length of 3 digits. (2 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{3}"
+		},
+		"Exact3NumericText": {
+			"description": "Specifies a numeric string with an exact length of 3 digits.",
+			"type": "string",
+			"pattern": "[0-9]{3}"
+		},
+		"Exact3Text": {
+			"description": "3 alphanumeric  and special characters",
+			"type": "string",
+			"minLength": "3",
+			"maxLength": "3"
+		},
+		"Exact40Text": {
+			"description": "Month within a particular calendar year represented by YYYY-MM (ISO 8601).",
+			"type": "string",
+			"minLength": "40",
+			"maxLength": "40"
+		},
+		"Exact4AlphaNumericText": {
+			"description": "4 alphanumeric characters",
+			"type": "string",
+			"pattern": "[0-9A-Za-z]{4}"
+		},
+		"Exact4Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with an exact length of 4 digits. (3 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{4}"
+		},
+		"Exact4NumericText": {
+			"description": "Specifies a numeric string with an exact length of 4 digits.",
+			"type": "string",
+			"pattern": "[0-9]{4}"
+		},
+		"Exact4Text": {
+			"description": "4 alphanumeric  and special characters",
+			"type": "string",
+			"minLength": "4",
+			"maxLength": "4"
+		},
+		"Exact5NumericText": {
+			"description": "Specifies a numeric string with an exact length of 5 digits.",
+			"type": "string",
+			"pattern": "[0-9]{5}"
+		},
+		"Exact6Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with an exact length of 6 digits. (4 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{6}"
+		},
+		"Exact6NumericText": {
+			"description": "Specifies a numeric string with an exact length of 6 digits.",
+			"type": "string",
+			"pattern": "[0-9]{6}"
+		},
+		"Exact7Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with an exact length of 7 digits. (5 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{7}"
+		},
+		"Exact8AlphaNumericText": {
+			"description": "8 alphanumeric characters",
+			"type": "string",
+			"pattern": "[0-9A-Za-z]{8}"
+		},
+		"Exact8NumericText": {
+			"description": "Specifies a numeric string with an exact length of 8 digits.",
+			"type": "string",
+			"pattern": "[0-9]{8}"
+		},
+		"Exact8Text": {
+			"description": "8 alphanumeric  and special characters",
+			"type": "string",
+			"minLength": "8",
+			"maxLength": "8"
+		},
+		"IBANIdentifier": {
+			"description": "The International Bank Account Number is a code used internationally by financial institutions to uniquely identify the account of a customer at a financial institution as described in the 2007 edition of the ISO 13616 standard Banking and related financial services International Bank Account Number (IBAN) and replaced by the more recent edition of the standard.",
+			"type": "string",
+			"pattern": "[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}"
+		},
+		"ImpliedCurrencyAndAmount": {
+			"description": "Number of monetary units specified in a currency where the unit of currency is implied by the context and compliant with ISO 4217. The decimal separator is a dot.",
+			"type": "string",
+			"pattern": "\\-?[0-9]{1,18}(\\.?[0-9]{0,5})?"
+		},
+		"ISO18245MerchantCategoryCode": {
+			"description": "Code used to enable the classification of merchants into specific categories. (ISO 18245).",
+			"type": "string",
+			"pattern": "[0-9]{4,4}"
+		},
+		"ISO2AlphaNumericCountryCode": {
+			"description": "Code to identify a country, a dependency, or another area of particular geopolitical interest (ISO 3166, Text -2 code)",
+			"type": "string",
+			"pattern": "[A-Z]{2,2}"
+		},
+		"ISO3AlphaNumericCurrencyCode": {
+			"description": "Code to identify the Currency (ISO 4217)",
+			"type": "string",
+			"pattern": "[A-Z]{3,3}"
+		},
+		"ISO3NumericCountryCode": {
+			"description": "Code to identify a country, a dependency, or another area of particular geopolitical interest (ISO 3166, Numeric-3 code)",
+			"type": "string",
+			"pattern": "[0-9]{3,3}"
+		},
+		"ISO3NumericCurrencyCode": {
+			"description": "Code to identify the Currency (ISO 4217)",
+			"type": "string",
+			"pattern": "[0-9]{3,3}"
+		},
+		"ISOCountrySubdivisionCode": {
+			"description": "Code to identify an area of geopolitical interest, based on names obtained from the United Nations ISO 3166-2 or the local authority",
+			"type": "string",
+			"pattern": "[A-Z]{2,3}"
+		},
+		"ISODate": {
+			"description": "Date within a particular calendar year represented by YYYY-MM-DD (ISO 8601).",
+			"type": "string",
+			"pattern": "([0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])"
+		},
+		"ISODateTime": {
+			"description": "The dateTime is specified in the following form <YYYY-MM-DDThh:mm:ss>",
+			"type": "string",
+			"pattern": "(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-](?:2[0-3]|[01][0-9]):[0-5][0-9])?"
+		},
+		"ISOMax3ALanguageCode": {
+			"description": " Identification of the language name in accordance with ISO 639-1 and ISO 639-2.",
+			"type": "string",
+			"pattern": "[a-z]{2,3}"
+		},
+		"ISOYearMonth": {
+			"description": "Month within a particular calendar year represented by YYYY-MM (ISO 8601).",
+			"type": "string",
+			"pattern": "([0-9]{4})-(1[0-2]|0[1-9])"
+		},
+		"Max100Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 100 characters.",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "100"
+		},
+		"Max10NumericText": {
+			"description": "Specifies a numeric string with a minlength of 1 and maxlength of 10 digits.",
+			"type": "string",
+			"pattern": "[0-9]{1,10}"
+		},
+		"Max10Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 10 characters.",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "10"
+		},
+		"Max11Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a maxlength of 11 digits. (max of 8 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{2,11}"
+		},
+		"Max11NumericText": {
+			"description": "Specifies a numeric string with a minlength of 1 and maxlength of 11 digits.",
+			"type": "string",
+			"pattern": "[0-9]{1,11}"
+		},
+		"Max128Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a maxlength of 128 digits. (max of 96 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{2,128}"
+		},
+		"Max12Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 12 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "12"
+		},
+		"Max14NumericText": {
+			"description": "Specifies a numeric string with a minlength of 1 and maxlength of 14 digits",
+			"type": "string",
+			"pattern": "[0-9]{1,14}"
+		},
+		"Max15Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 15 characters.",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "15"
+		},
+		"Max16Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 16 characters.",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "16"
+		},
+		"Max171Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a maxlength of 171 digits. (max of 128 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{2,171}"
+		},
+		"Max17Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 17 characters.",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "17"
+		},
+		"Max19NumericText": {
+			"description": "Specifies a numeric string with minlength of 1 and a maxlength of 19 digits.",
+			"type": "string",
+			"pattern": "[0-9]{1,19}"
+		},
+		"Max19Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 19 characters.",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "19"
+		},
+		"Max200Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a maxlength of 200 digits. (max of 150 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{2,200}"
+		},
+		"Max200Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 200 characters.",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "200"
+		},
+		"Max20Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 20 characters.",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "20"
+		},
+		"Max255Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 255 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "255"
+		},
+		"Max256Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 256 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "256"
+		},
+		"Max26Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a maxlength of 26 digits. (max of 19 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{2,26}"
+		},
+		"Max26Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 26 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "26"
+		},
+		"Max29AlphaNumericText": {
+			"description": "Specifies an alphanumeric string with a minlength of 1 and maxlength of 29 digits.",
+			"type": "string",
+			"pattern": "[0-9A-Za-z]{1,29}"
+		},
+		"Max2KBase64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a maxlength of 2731 digits. (max of 2048 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{2,2731}"
+		},
+		"Max2NumericText": {
+			"description": "Specifies a numeric string with a  minlength of 1 and maxlength of 2 digits",
+			"type": "string",
+			"pattern": "[0-9]{1,2}"
+		},
+		"Max2Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 2 characters.",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "2"
+		},
+		"Max3000Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 3000 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "3000"
+		},
+		"Max30Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 30 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "30"
+		},
+		"Max31Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a maxlength of 31 digits. (max of 23 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{2,31}"
+		},
+		"Max340Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a maxlength of 340 digits. (max of 255 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{2,340}"
+		},
+		"Max34Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 34 characters.",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "34"
+		},
+		"Max35AlphaNumericText": {
+			"description": "Specifies an alphanumeric string with a minlength of 1 and maxlength of 35 digits.",
+			"type": "string",
+			"pattern": "[0-9A-Za-z]{1,35}"
+		},
+		"Max35Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 35 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "35"
+		},
+		"Max37Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 37 characters.",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "37"
+		},
+		"Max3AlphaNumericText": {
+			"description": "Specifies an alphanumeric string with a minlength of 1 and maxlength of 3 digits",
+			"type": "string",
+			"pattern": "[0-9A-Za-z]{1,3}"
+		},
+		"Max3NumericText": {
+			"description": "Specifies a numeric string with a minlength of 1 and maxlength of 3 digits",
+			"type": "string",
+			"pattern": "[0-9]{1,3}"
+		},
+		"Max40Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 40 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "40"
+		},
+		"Max43Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a maxlength of 43 digits. (max of 32 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{2,43}"
+		},
+		"Max45Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 45 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "45"
+		},
+		"Max47Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a maxlength of 47 digits. (max of 35 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{2,47}"
+		},
+		"Max49Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 49 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "49"
+		},
+		"Max4NumericText": {
+			"description": "Specifies a numeric string with a minlength of 1 and maxlength of 4 digits",
+			"type": "string",
+			"pattern": "[0-9]{1,4}"
+		},
+		"Max4Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 4 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "4"
+		},
+		"Max50Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 50 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "50"
+		},
+		"Max5462Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a maxlength of 5462 digits. (max of 4096 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{2,5462}"
+		},
+		"Max5NumericText": {
+			"description": "Specifies a numeric string with a minlength of 1 and maxlength of 5 digits",
+			"type": "string",
+			"pattern": "[0-9]{1,5}"
+		},
+		"Max67Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a maxlength of 200 digits. (150 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{2,67}"
+		},
+		"Max683Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a maxlength of 683 digits. (max of 512 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{2,683}"
+		},
+		"Max6AlphaNumericText": {
+			"description": "Specifies an alphanumeric string with a minlength of 1 and maxlength of 6 digits.",
+			"type": "string",
+			"pattern": "[0-9A-Za-z]{1,6}"
+		},
+		"Max6Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a maxlength of 6 digits. (max of 4 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{2,6}"
+		},
+		"Max70Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 70 digits.",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "70"
+		},
+		"Max76Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 76 characters.",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "76"
+		},
+		"Max7AlphaNumericText": {
+			"description": "Specifies an alphanumeric string with a minlength of 1 and maxlength of 7 digits",
+			"type": "string",
+			"pattern": "[0-9A-Za-z]{1,7}"
+		},
+		"Max7NumericText": {
+			"description": "Specifies a numeric string with a minlength of 1 and maxlength of 7 digits",
+			"type": "string",
+			"pattern": "[0-9]{1,7}"
+		},
+		"Max8000Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 8000 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "8000"
+		},
+		"Max8Text": {
+			"description": "Specifies a character string with a minlength of 1 and maxlength of 8 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "8"
+		},
+		"Max9NumericText": {
+			"description": "Specifies a numeric string with a minlength of 1 and maxlength of 9 digits",
+			"type": "string",
+			"pattern": "[0-9]{1,9}"
+		},
+		"Min10Max22Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a minlength of 10 and a maxlength of 22 digits. (7 to 16 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{10,22}"
+		},
+		"Min11Max22Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a minlength of 11 and a maxlength of 22 digits. (8 to 16 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{11,22}"
+		},
+		"Min12Max16Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a minlength of 12 and a maxlength of 16 digits. (9 to 12 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{12,16}"
+		},
+		"Min14Max16Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a minlength of 14 and a maxlength of 16 digits. (10 to 12 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{14,16}"
+		},
+		"Min27Max86Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a minlength of 27 and a maxlength of 86 digits. (20 to 64 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{27,86}"
+		},
+		"Min2Max226Text": {
+			"description": "Specifies a character string with a minlength of 2 and maxlength of 226 digits.",
+			"type": "string",
+			"minLength": "2",
+			"maxLength": "226"
+		},
+		"Min2Max3AlphaText": {
+			"description": "Specifies an alpha string with a minlength of 2 characters and a maxlength of 3 digits",
+			"type": "string",
+			"pattern": "[A-Za-z]{2,3}"
+		},
+		"Min2Max3NumericText": {
+			"description": "Specifies a numeric string with a minlength of 2 digits and a maxlength of 3 digits.",
+			"type": "string",
+			"pattern": "[0-9]{2,3}"
+		},
+		"Min3Max4Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a minlength of 3 and a maxlength of 4 digits. (2 to 3 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{3,4}"
+		},
+		"Min4Max45Text": {
+			"description": "Specifies a character string with a minlength of 4 and maxlength of 45 digits.",
+			"type": "string",
+			"minLength": "4",
+			"maxLength": "45"
+		},
+		"Min6Max43Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a minlength of 6 and a maxlength of 43 digits. (4 t0 32 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{6,43}"
+		},
+		"Min6Max54Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a minlength of 6 and a maxlength of 54 digits. (4 to 40 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{6,54}"
+		},
+		"Min6Max86Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a minlength of 6 and a maxlength of 86 digits. (4 to 64 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{6,86}"
+		},
+		"Min72Max296Text": {
+			"description": "Specifies a character string with min 72 and max 296 digits.",
+			"type": "string",
+			"minLength": "72",
+			"maxLength": "296"
+		},
+		"Min7Max15NumericText": {
+			"description": "Specifies a numeric string with a minlength of 7 digits and a maxlength of 15 digits.",
+			"type": "string",
+			"pattern": "[0-9]{7,15}"
+		},
+		"Min7Max22Base64BinaryText": {
+			"description": "Specifies a binary data to Base64URL text encoding with a minlength of 7 and a maxlength of 22 digits. (5 to 16 bytes)",
+			"type": "string",
+			"pattern": "[0-9A-Za-z_-]{7,22}"
+		},
+		"Min9Max19NumericText": {
+			"description": "Specifies a numeric string with a minlength of 9 digits and a maxlength of 19 digits.",
+			"type": "string",
+			"pattern": "[0-9]{9,19}"
+		},
+		"PercentageRate": {
+			"description": "Rate expressed as a percentage",
+			"type": "string",
+			"pattern": "[0-9]{1,11}(\\.?[0-9]{0,10})?"
+		},
+		"PhoneNumberText": {
+			"description": "International phone number E164 standard",
+			"type": "string",
+			"pattern": "\\+[0-9]{1}?\\-?[0-9]{1,3}?[0-9]{1,14}"
+		},
+		"TrueFalseIndicator": {
+			"description": "A flag indicating a True or False value.",
+			"type": "boolean"
+		},
+		"UUIDType": {
+			"description": "UUID ",
+			"type": "string",
+			"pattern": "[0-9A-F]{8}-[0-9A-F]{4}-[4][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}"
+		},
+		"Max14AlphaNumericText": {
+			"description": "Specifies a alphanumeric string with a minlength of 1 and maxlength of 14 digits",
+			"type": "string",
+			"pattern": "[0-9]{1,14}"
+		},
+		"ISO3AlphabeticCurrencyCode": {
+			"description": "Code to identify the Currency ",
+			"type": "string",
+			"pattern": "[0-9]{3,3}"
+		},
+		"Max40AlphanumericText": {
+			"description": "Specifies a numeric character string with a minlength of 1 and maxlength of 40 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "40"
+		},
+		"Max50AlphanumericText": {
+			"description": "Specifies a alphanumeric character string with a minlength of 1 and maxlength of 50 characters",
+			"type": "string",
+			"minLength": "1",
+			"maxLength": "50"
+		},
+		"Max2AlphanumericText": {
+			"description": "Specifies an alphanumeric string with a minlength of 1 and maxlength of 2 digits",
+			"type": "string",
+			"pattern": "[0-9A-Za-z]{1,2}"
+		},
+		"Max19AlphaNumericText": {
+			"description": "Specifies an alphanumeric string with a minlength of 1 and maxlength of 19 digits",
+			"type": "string",
+			"pattern": "[0-9A-Za-z]{1,19}"
+		}
+	}
+}
