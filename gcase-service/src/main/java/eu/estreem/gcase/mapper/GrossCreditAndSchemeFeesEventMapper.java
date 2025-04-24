@@ -5,6 +5,8 @@ package eu.estreem.gcase.mapper;
 
 import eu.estreem.gcase.MappingUtils;
 import eu.estreem.gcase.domain.GrossCreditAndSchemeFeesEvent;
+import eu.estreem.gcase.domain.PrecompEvent;
+import eu.estreem.gcase.domain.TracabilityEvent;
 import eu.estreem.gcase.model.*;
 import eu.estreem.model.v1.*;
 
@@ -121,12 +123,12 @@ public class GrossCreditAndSchemeFeesEventMapper {
             List<KeyValueType> keyValueTypes = dto.getAdditionalCodes().stream().map(
                     keyValueTypeDTO -> {
                         KeyValueType keyValueType = new KeyValueType();
-                        keyValueType.setKey(keyValueTypeDTO.getValue());
-                        keyValueType.setValue(keyValueType.getValue());
+                        keyValueType.setKey(keyValueTypeDTO.getKey());
+                        keyValueType.setValue(keyValueTypeDTO.getValue());
                         return keyValueType;
                     }
             ).collect(Collectors.toList());
-            interchange.setAdditionalCode((KeyValueType) keyValueTypes);
+            interchange.setAdditionalCode(keyValueTypes.isEmpty() ? null : keyValueTypes.get(0));
         }
 
         interchange.setRate(dto.getRate());
@@ -144,8 +146,7 @@ public class GrossCreditAndSchemeFeesEventMapper {
         amountType.setCurrency(dto.getTotalAmount().getCurrency());
         schemeFees.setTotalAmount(amountType);
 
-        // revoir cette implémentation et compléter
-        if(dto.getSchemeFeesDetails() != null ){
+        if(dto.getSchemeFeesDetails() != null && !dto.getSchemeFeesDetails().isEmpty()){
             List<SchemeFeesType> schemeFeesTypes = dto.getSchemeFeesDetails().stream().map(
                     schemeFeeTypeDTO -> {
                         SchemeFeesType schemeFeesType = new SchemeFeesType();
@@ -158,11 +159,82 @@ public class GrossCreditAndSchemeFeesEventMapper {
                     }
             ).collect(Collectors.toList());
 
-            schemeFees.setSchemeFeesDetails((SchemeFeesType) schemeFeesTypes);
-
+            // Set the first scheme fee detail if available
+            if (!schemeFeesTypes.isEmpty()) {
+                schemeFees.setSchemeFeesDetails(schemeFeesTypes.get(0));
+            }
         }
 
-        return  schemeFees;
+        return schemeFees;
     }
 
+
+    // Ajouter cette méthode pour mapper depuis l'événement précomp
+    public GrossCreditAndSchemeFeesEvent fromPrecompEvent(PrecompEvent precompEvent) {
+        if (precompEvent == null) return null;
+
+        GrossCreditAndSchemeFeesEvent event = new GrossCreditAndSchemeFeesEvent();
+
+        // Set basic transaction context with tracability event ID
+        DICOOBJETJSONTransactionContext transactionContext = new DICOOBJETJSONTransactionContext();
+        transactionContext.setTracabilityEventID(precompEvent.getTracabilityEventId());
+        event.setTransactionContext(transactionContext);
+
+        // Set basic header info
+        DICOOBJETJSONHeaderFunctionalInfo header = new DICOOBJETJSONHeaderFunctionalInfo();
+        header.setMessageDescription("PC04 Gross Cash Flow Event");
+        header.setProtocolVersion("1.0");
+        event.setHeaderFunctionalInfo(header);
+
+        return event;
+    }
+
+    public static GrossCreditAndSchemeFeesEvent toEnrichedEvent(PrecompEvent precompEvent, TracabilityEvent tracabilityEvent) {
+        if (precompEvent == null || tracabilityEvent == null) {
+            return null;
+        }
+
+        // Create base event from precomp event
+        GrossCreditAndSchemeFeesEvent event = new GrossCreditAndSchemeFeesEvent();
+
+        // Set transaction context with tracability event ID
+        DICOOBJETJSONTransactionContext transactionContext = new DICOOBJETJSONTransactionContext();
+        transactionContext.setTracabilityEventID(tracabilityEvent.getEventId());
+        // TraceabilityService is not set as it requires a List<TraceabilityServiceCodeset>
+        event.setTransactionContext(transactionContext);
+
+        // Set header info
+        DICOOBJETJSONHeaderFunctionalInfo header = new DICOOBJETJSONHeaderFunctionalInfo();
+        header.setMessageDescription("PC04 Gross Cash Flow Event");
+        header.setProtocolVersion("1.0");
+        event.setHeaderFunctionalInfo(header);
+
+        // Set merchant info
+        DICOOBJETJSONMerchant merchant = new DICOOBJETJSONMerchant();
+        merchant.setMerchantId(tracabilityEvent.getMerchantId());
+        event.setMerchant(merchant);
+
+        // Set scheme fees from tracability event
+        DICOOBJETJSONSchemeFees schemeFees = new DICOOBJETJSONSchemeFees();
+
+        // Set total amount
+        AmountType totalAmount = new AmountType();
+        totalAmount.setAmount(tracabilityEvent.getTotalSchemeFeesAmount());
+        totalAmount.setCurrency(tracabilityEvent.getSchemeFeeCurrency());
+        schemeFees.setTotalAmount(totalAmount);
+
+        // Set scheme fees details if available
+        if (tracabilityEvent.getSchemeFeesDetails() != null && !tracabilityEvent.getSchemeFeesDetails().isEmpty()) {
+            schemeFees.setSchemeFeesDetails(tracabilityEvent.getSchemeFeesDetails().get(0));
+        }
+
+        event.setSchemeFees(schemeFees);
+
+        // Set operation IDs for linking
+        DICOOBJETJSONTransactionIdentification transactionIdentification = new DICOOBJETJSONTransactionIdentification();
+        transactionIdentification.setTransactionReference(tracabilityEvent.getOperationId());
+        event.setTransactionIdentification(transactionIdentification);
+
+        return event;
+    }
 }

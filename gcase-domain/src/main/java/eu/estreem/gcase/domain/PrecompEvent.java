@@ -7,6 +7,7 @@ import lombok.Value;
 @Builder
 public class PrecompEvent {
 
-     String id;
-     String transactionId;
+     String eventId;
+     String tracabilityEventId;
+     String operationId;
 }

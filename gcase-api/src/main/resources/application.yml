@@ -2,23 +2,21 @@ server:
   port: 8087
 
 spring:
+  application:
+    name: GCASE(GrossCreditAndSchemeFeesEvent)
   jackson:
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
-
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
       group-id: gcase-group
       auto-offset-reset: earliest
 
-
   devtools:
     restart:
       poll-interval: 1s
       quiet-period: 500ms
-
-
 
 kafka:
   topic:
@@ -28,4 +26,20 @@ kafka:
 sid:
   api:
     url: https://sid.example.com/creditcom/v1
-    token: ${SID_API_TOKEN}
+    token: default-token-for-dev
+
+
+# Configuration du cache pour les événements en attente
+cache:
+  event:
+    # Délai d'expiration des événements en attente (en minutes)
+    expiration: 60
+    # Intervalle de nettoyage du cache (en minutes)
+    cleanup-interval: 15
+
+
+
+
+
+
+

@@ -1,16 +1,18 @@
 package eu.estreem.gcase.controller;
 
-import eu.estreem.gcase.model.GrossCreditAndSchemeFeesEventDTO;
-import eu.estreem.gcase.service.GrossCreditAndSchemeFeesEventService;
+import eu.estreem.gcase.domain.GrossCreditAndSchemeFeesEvent;
+import eu.estreem.gcase.service.EventPublisherService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 
 @RestController
@@ -20,14 +22,14 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class GrossCreditAndSchemeFeesEventController {
 
-    private final GrossCreditAndSchemeFeesEventService grossCreditAndSchemeFeesEventService;
+    private final EventPublisherService eventPublisherService;
 
     /**
      * POST /event : Push the full event to the financial institution
      * As and when a CRE PREPAI has been generated, a Gross Cash Flow Event is generated and  the Institution (merchant bank) is notified with the reference full event.
      *
      * @param eventId Event Identifier received in the notification (required)
-     * @param eventDto  (optional)
+     * @param event  (optional)
      * @return No content, the service completed successfully and there is no content to be returned.  (status code 204)
      *         or Incorrect number of parameters, or malformed parameter. &lt;br&gt;The &lt;code&gt;eventID&lt;/code&gt; is a &lt;b&gt;RFC 4122&lt;/b&gt; UUID v4 &lt;code&gt;nnnnnn-nnnn-4nnn-9nnn-nnnnnnnnnnnn&lt;/code&gt; (4 is the version and &#39;9&#39; first 2 bits) is the variant, here variant 1). (status code 400)
      *         or Access token is missing or invalid. (status code 401)
@@ -58,9 +60,16 @@ public class GrossCreditAndSchemeFeesEventController {
             value = "/event",
             consumes = { "application/json" }
     )
-    public ResponseEntity<Void> publishGrossCashFlow(@RequestHeader(name="eventID",required = true) String eventId, @Valid @RequestBody GrossCreditAndSchemeFeesEventDTO eventDto){
-
-        grossCreditAndSchemeFeesEventService.handleGrossCashFlowEvent(eventDto, eventId);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Void> publishGrossCashFlow(@RequestHeader(name="eventID",required = true) String eventId, @Valid @RequestBody GrossCreditAndSchemeFeesEvent event){
+        try {
+            eventPublisherService.publishEvent(eventId,event);
+            return ResponseEntity.noContent().build();
+        } catch (IllegalArgumentException e) {
+            // Bad request - client error
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage(), e);
+        } catch (Exception e) {
+            // Server error
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to process event", e);
+        }
     }
 }

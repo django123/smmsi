@@ -33,6 +33,11 @@ public class KafkaConsumerConfig {
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         props.put(JsonDeserializer.TRUSTED_PACKAGES, "eu.estreem.*");
+        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+
+        // Parametres avancés(Optionnels)
+        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 500); // Nombre max de messages par poll
+        props.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, 500); // Temps max d'attente par poll
         return new DefaultKafkaConsumerFactory<>(props);
     }
 
